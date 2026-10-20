@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1320" viewBox="0 0 1600 1320" role="img" aria-labelledby="figure-title figure-desc">
+<title id="figure-title">Selection matrix and algorithm rules</title>
+<desc id="figure-desc">Capped support q is the minimum of distinct author proxies and template-capped support for each day and platform. Activity ranking is lexicographic within temporal-status and acceptance-quality tiers. Balanced queues retain emerging and unusual candidates. Default normal sample acceptance is eighty percent.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 Z" fill="#1b2c46"/></marker><marker id="loop-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 Z" fill="#8065a0"/></marker></defs>
+<rect width="1600" height="1320" fill="white"/>
+<text x="40" y="58" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="600" text-anchor="start">Selection: support, ordered priorities and balanced exploration</text>
+<text x="40" y="96" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">Compute support in explicit units, compare priorities in order, then reserve room for exploration.</text>
+<rect x="40" y="138" width="1520" height="208" rx="16" fill="#f8fafc" stroke="#cdd6e3" stroke-width="1.2"/>
+<text x="65" y="173" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" text-anchor="start" letter-spacing="0.8">AUTHOR BREADTH</text>
+<text x="65" y="216" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" text-anchor="start">A = distinct author proxies</text>
+<text x="65" y="252" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Within one day and platform.</text>
+<text x="430" y="173" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" text-anchor="start" letter-spacing="0.8">TEMPLATE CAP</text>
+<text x="430" y="216" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" text-anchor="start">T = Σ<tspan baseline-shift="sub" font-size="16">f</tspan> min(3, A<tspan baseline-shift="sub" font-size="16">f</tspan>)</text>
+<text x="430" y="252" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">A_f: distinct authors of text family f.</text>
+<text x="865" y="173" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" text-anchor="start" letter-spacing="0.8">CAPPED SUPPORT</text>
+<text x="865" y="216" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" text-anchor="start">q = min(A, T)</text>
+<text x="865" y="252" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Avoid counting repeated text as</text>
+<text x="865" y="275" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">independent population support.</text>
+<text x="1220" y="173" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" text-anchor="start" letter-spacing="0.8">TWO-WINDOW TOTAL</text>
+<text x="1220" y="216" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" text-anchor="start">Q<tspan baseline-shift="sub" font-size="16">14</tspan> = Σ q</text>
+<text x="1220" y="252" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Prior 7 days + recent 7 days.</text>
+<line x1="402" y1="163" x2="402" y2="290" stroke="#cdd6e3" stroke-width="1"/>
+<line x1="840" y1="163" x2="840" y2="290" stroke="#cdd6e3" stroke-width="1"/>
+<line x1="1194" y1="163" x2="1194" y2="290" stroke="#cdd6e3" stroke-width="1"/>
+<text x="65" y="322" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Author proxy: display name within a platform. Use included observed days; merge source IDs before recounting.</text>
+<rect x="40" y="380" width="900" height="410" rx="16" fill="#ffffff" stroke="#cdd6e3" stroke-width="1.3"/>
+<text x="65" y="423" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" text-anchor="start">Activity priority · lexicographic order</text>
+<text x="65" y="455" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Compare the first unequal feature; later features only break ties.</text>
+<rect x="65" y="480" width="850" height="43" rx="6" fill="#e9f0fb"/>
+<text x="82" y="508" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" text-anchor="start">Order</text>
+<text x="185" y="508" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" text-anchor="start">Feature</text>
+<text x="650" y="508" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" text-anchor="start">Direction</text>
+<text x="790" y="508" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" text-anchor="start">Units</text>
+<rect x="65" y="528" width="850" height="44" rx="0" fill="#f8fafc"/>
+<text x="88" y="552" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">1</text>
+<text x="185" y="552" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="600" text-anchor="start">Q14</text>
+<text x="650" y="552" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">High first</text>
+<text x="790" y="552" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Capped support</text>
+<text x="88" y="597" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">2</text>
+<text x="185" y="597" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="600" text-anchor="start">Active window days</text>
+<text x="650" y="597" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">High first</text>
+<text x="790" y="597" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Observed days</text>
+<rect x="65" y="618" width="850" height="44" rx="0" fill="#f8fafc"/>
+<text x="88" y="642" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">3</text>
+<text x="185" y="642" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="600" text-anchor="start">Window platform breadth</text>
+<text x="650" y="642" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">High first</text>
+<text x="790" y="642" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Platforms</text>
+<text x="88" y="687" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">4</text>
+<text x="185" y="687" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="600" text-anchor="start">Engagement</text>
+<text x="650" y="687" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">High first</text>
+<text x="790" y="687" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Response count</text>
+<rect x="65" y="708" width="850" height="44" rx="0" fill="#f8fafc"/>
+<text x="88" y="732" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">5</text>
+<text x="185" y="732" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="600" text-anchor="start">Stable candidate ID</text>
+<text x="650" y="732" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Low first</text>
+<text x="790" y="732" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Tie-break only</text>
+<rect x="980" y="380" width="580" height="410" rx="16" fill="#ffffff" stroke="#cdd6e3" stroke-width="1.3"/>
+<text x="1005" y="423" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" text-anchor="start">Balanced review queues</text>
+<text x="1005" y="455" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Default first batch: 10 distinct candidates</text>
+<rect x="1005" y="487" width="530" height="71" rx="10" fill="#e9f0fb" stroke="#abc1e3" stroke-width="1"/>
+<text x="1036" y="532" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" text-anchor="start">5</text>
+<text x="1080" y="514" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" text-anchor="start" letter-spacing="0.5">OVERALL</text>
+<text x="1080" y="539" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Q14 order, then its tie-breaks.</text>
+<rect x="1005" y="570" width="530" height="71" rx="10" fill="#e6f2e9" stroke="#a9cbb2" stroke-width="1"/>
+<text x="1036" y="615" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" text-anchor="start">3</text>
+<text x="1080" y="597" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" text-anchor="start" letter-spacing="0.5">NEW / GROWING</text>
+<text x="1080" y="622" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Normalized growth, then Qrecent.</text>
+<rect x="1005" y="653" width="530" height="71" rx="10" fill="#efeafa" stroke="#c5b6df" stroke-width="1"/>
+<text x="1036" y="698" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" text-anchor="start">2</text>
+<text x="1080" y="680" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" text-anchor="start" letter-spacing="0.5">UNUSUAL</text>
+<text x="1080" y="705" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Rotate fading / qualified burst / other.</text>
+<text x="1005" y="764" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Later batches: 2 overall / 1 emerging / 1 unusual.</text>
+<rect x="40" y="824" width="1520" height="225" rx="16" fill="#f8fafc" stroke="#cdd6e3" stroke-width="1.2"/>
+<text x="65" y="866" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" text-anchor="start">Admission uses the inspected sample, not a cluster-purity estimate</text>
+<rect x="65" y="892" width="450" height="125" rx="10" fill="#e9f0fb" stroke="#abc1e3" stroke-width="1"/>
+<text x="83" y="924" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">Distinct sample</text>
+<text x="83" y="953" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">10 examples when available.</text>
+<text x="83" y="977" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Smaller groups: use all n.</text>
+<rect x="540" y="892" width="450" height="125" rx="10" fill="#e6f2e9" stroke="#a9cbb2" stroke-width="1"/>
+<text x="558" y="924" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">Normal match gate</text>
+<text x="558" y="953" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">At least ceil(0.8 × n) matches.</text>
+<text x="558" y="977" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">10 examples → at least 8 match.</text>
+<rect x="1015" y="892" width="450" height="125" rx="10" fill="#efeafa" stroke="#c5b6df" stroke-width="1"/>
+<text x="1033" y="924" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">Provisional: 50% to &lt;80%</text>
+<text x="1033" y="953" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Refine or retain in the watchlist.</text>
+<text x="1033" y="977" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Fill vacancies only at true exhaustion.</text>
+<text x="65" y="1035" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Provisional findings never displace accepted findings. Different views can still concern the same topic.</text>
+<rect x="40" y="1083" width="1520" height="164" rx="16" fill="#ffffff" stroke="#cdd6e3" stroke-width="1.2"/>
+<text x="65" y="1123" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" text-anchor="start">What does not become an extra importance weight</text>
+<text x="65" y="1157" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Geometry supports grouping, diverse samples and neighbor nomination; it does not add importance points.</text>
+<text x="65" y="1184" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">No extra thread / author / platform bonuses, all-history totals or stacked penalties.</text>
+<text x="65" y="1211" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">Engagement = max(explicit replies, attributable possible responses); never add the same response streams.</text>
+<text x="40" y="1291" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Temporal status is a separate rule: two seven-day windows, platform-normalized share, coverage and actual daily direction.</text>
+<text x="65" y="779" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="15">Activity order applies within supported-status and acceptance-quality tiers.</text>
+<text x="558" y="1001" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17">Also requires supported relevance and scope.</text>
+</svg>

@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1330" viewBox="0 0 1600 1330" role="img" aria-labelledby="figure-title figure-desc">
+<title id="figure-title">Bounded model requests and review loop</title>
+<desc id="figure-desc">Candidate examples are reviewed together in one Jev request. Final concerns are compared together in one duplicate-screen request. Configurable bilingual writing is followed by one Jev request containing two title checks and an optional action check. Review and repair loops stay bounded.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 Z" fill="#1b2c46"/></marker><marker id="loop-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 Z" fill="#8065a0"/></marker></defs>
+<rect width="1600" height="1330" fill="white"/>
+<text x="40" y="58" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="600" text-anchor="start">Several examples share one request</text>
+<text x="40" y="96" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">Requests are counted by stage. Samples, questions and source messages are not separate API calls.</text>
+<rect x="40" y="145" width="460" height="644" rx="17" fill="#f8fafc" stroke="#cdd6e3" stroke-width="1.2"/>
+<rect x="62" y="166" width="38" height="26" rx="13" fill="#ffffff" stroke="#cdd6e3" stroke-width="1"/>
+<text x="81.0" y="184" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" text-anchor="middle">R</text>
+<text x="117" y="189" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" text-anchor="start">Candidate review</text>
+<text x="62" y="224" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Discovery + refinements + neighbors</text>
+<rect x="570" y="145" width="460" height="644" rx="17" fill="#f8fafc" stroke="#cdd6e3" stroke-width="1.2"/>
+<rect x="592" y="166" width="38" height="26" rx="13" fill="#ffffff" stroke="#cdd6e3" stroke-width="1"/>
+<text x="611.0" y="184" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" text-anchor="middle">D</text>
+<text x="647" y="189" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" text-anchor="start">Final-set comparison</text>
+<text x="592" y="224" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">A changed shortlist can need a new screen</text>
+<rect x="1100" y="145" width="460" height="644" rx="17" fill="#f8fafc" stroke="#cdd6e3" stroke-width="1.2"/>
+<rect x="1122" y="166" width="38" height="26" rx="13" fill="#ffffff" stroke="#cdd6e3" stroke-width="1"/>
+<text x="1141.0" y="184" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" text-anchor="middle">A</text>
+<text x="1177" y="189" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" text-anchor="start">Draft + final checks</text>
+<text x="1122" y="224" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Writing, then one Jev check request</text>
+<rect x="65" y="251" width="410" height="107" rx="12" fill="#e9f0fb" stroke="#abc1e3" stroke-width="1.6"/>
+<text x="83" y="281" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">One bounded evidence packet</text>
+<text x="83" y="308" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Up to 10 distinct focal examples.</text>
+<text x="83" y="330" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Originals + capped context; anchors in code.</text>
+<path d="M 270 358 L 270 390" fill="none" stroke="#1b2c46" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="65" y="390" width="410" height="133" rx="12" fill="#fff0d3" stroke="#d9bd7e" stroke-width="1.6"/>
+<text x="83" y="420" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">ONE Jev request</text>
+<text x="83" y="447" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Relevance · membership · contribution · stance</text>
+<text x="83" y="469" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Contextual links · aliases · duplicate concern</text>
+<text x="83" y="491" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Many typed questions share the same packet.</text>
+<path d="M 270 523 L 270 555" fill="none" stroke="#1b2c46" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="65" y="555" width="410" height="105" rx="12" fill="#e9f0fb" stroke="#abc1e3" stroke-width="1.6"/>
+<text x="83" y="585" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">Code applies the policy</text>
+<text x="83" y="612" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Normal match gate: at least 80%.</text>
+<text x="83" y="634" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">50% to &lt;80%: refine / watchlist.</text>
+<text x="65" y="701" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">One candidate refinement by default.</text>
+<text x="65" y="727" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">A rejection opens room for another candidate.</text>
+<text x="65" y="753" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Every completed attempt counts toward R.</text>
+<rect x="595" y="251" width="410" height="107" rx="12" fill="#e9f0fb" stroke="#abc1e3" stroke-width="1.6"/>
+<text x="613" y="281" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">Current final shortlist</text>
+<text x="613" y="308" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Up to 8 concerns; up to 10 reviewed</text>
+<text x="613" y="330" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">matching originals for each concern.</text>
+<path d="M 800 358 L 800 390" fill="none" stroke="#1b2c46" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="595" y="390" width="410" height="133" rx="12" fill="#fff0d3" stroke="#d9bd7e" stroke-width="1.6"/>
+<text x="613" y="420" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">ONE Jev request</text>
+<text x="613" y="447" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">At most 28 pair questions for 8 concerns.</text>
+<text x="613" y="469" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Store originals once; bind both source sets.</text>
+<text x="613" y="491" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Identity means the same actionable issue.</text>
+<path d="M 800 523 L 800 555" fill="none" stroke="#1b2c46" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="595" y="555" width="410" height="105" rx="12" fill="#e9f0fb" stroke="#abc1e3" stroke-width="1.6"/>
+<text x="613" y="585" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">Confirmed merges only</text>
+<text x="613" y="612" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Require complete pairwise agreement.</text>
+<text x="613" y="634" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Union source IDs; recompute activity.</text>
+<text x="595" y="701" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Merge → recount → backfill if slots open.</text>
+<text x="595" y="727" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Cache an identical shortlist comparison.</text>
+<text x="595" y="753" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Fewer than 2 concerns need no D request.</text>
+<rect x="1125" y="251" width="410" height="107" rx="12" fill="#e6f2e9" stroke="#a9cbb2" stroke-width="1.6"/>
+<text x="1143" y="281" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">Writer · ONE draft</text>
+<text x="1143" y="308" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Up to 10 reviewed matching originals.</text>
+<text x="1143" y="330" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">title · title_en · proposed_action</text>
+<path d="M 1330 358 L 1330 390" fill="none" stroke="#1b2c46" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="1125" y="390" width="410" height="133" rx="12" fill="#fff0d3" stroke="#d9bd7e" stroke-width="1.6"/>
+<text x="1143" y="420" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">ONE Jev request</text>
+<text x="1143" y="447" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Chinese title: independently faithful?</text>
+<text x="1143" y="469" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">English title: independently faithful?</text>
+<text x="1143" y="491" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Optional action: grounded and relevant?</text>
+<path d="M 1330 523 L 1330 555" fill="none" stroke="#1b2c46" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="1125" y="555" width="410" height="105" rx="12" fill="#e9f0fb" stroke="#abc1e3" stroke-width="1.6"/>
+<text x="1143" y="585" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">Code composes the result</text>
+<text x="1143" y="612" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Both titles must pass (≥0.75 each).</text>
+<text x="1143" y="634" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">A failed optional action is simply omitted.</text>
+<text x="1125" y="701" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Default: 2 semantic draft attempts.</text>
+<text x="1125" y="727" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Failed titles → a fresh draft from evidence.</text>
+<text x="1125" y="753" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" text-anchor="start">Accepted topic remains auditable if writing fails.</text>
+<text x="40" y="839" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="600" text-anchor="start">The control loop</text>
+<text x="40" y="870" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="start">The algorithm revisits evidence or candidates, not every original message.</text>
+<rect x="40" y="900" width="300" height="110" rx="12" fill="#e9f0fb" stroke="#abc1e3" stroke-width="1.6"/>
+<text x="58" y="930" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">Review + interpret</text>
+<text x="58" y="957" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Accepted concern</text>
+<text x="58" y="979" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">or provisional watchlist</text>
+<rect x="390" y="900" width="300" height="110" rx="12" fill="#e9f0fb" stroke="#abc1e3" stroke-width="1.6"/>
+<text x="408" y="930" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">Recount + shortlist</text>
+<text x="408" y="957" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Recompute union history.</text>
+<text x="408" y="979" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Check final-set duplicates.</text>
+<rect x="740" y="900" width="300" height="110" rx="12" fill="#e6f2e9" stroke="#a9cbb2" stroke-width="1.6"/>
+<text x="758" y="930" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">Write + verify</text>
+<text x="758" y="957" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Fresh titles.</text>
+<text x="758" y="979" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">One Jev check per attempt.</text>
+<rect x="1090" y="900" width="470" height="110" rx="12" fill="#ffffff" stroke="#abc1e3" stroke-width="1.6"/>
+<text x="1108" y="930" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" text-anchor="start">Compose up to 8 findings</text>
+<text x="1108" y="957" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Readable activity + optional checked action.</text>
+<text x="1108" y="979" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">Original IDs from reviewed matching evidence.</text>
+<path d="M 340 955 L 390 955" fill="none" stroke="#1b2c46" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 690 955 L 740 955" fill="none" stroke="#1b2c46" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 1040 955 L 1090 955" fill="none" stroke="#1b2c46" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 540 1010 L 540 1058 L 190 1058 L 190 1010" fill="none" stroke="#8065a0" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5" marker-end="url(#loop-arrow)"/>
+<text x="365" y="1085" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="middle">merge / refine / backfill</text>
+<path d="M 890 900 L 890 886 L 720 886 L 720 955 L 740 955" fill="none" stroke="#8065a0" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5" marker-end="url(#loop-arrow)"/>
+<text x="899" y="886" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" text-anchor="start">title repair</text>
+<rect x="40" y="1124" width="1520" height="145" rx="14" fill="#f8fafc" stroke="#cdd6e3" stroke-width="1"/>
+<text x="65" y="1160" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" text-anchor="start">Nominal inference calls</text>
+<rect x="65" y="1180" width="520" height="63" rx="9" fill="#e6f2e9" stroke="#a9cbb2" stroke-width="1"/>
+<text x="81" y="1203" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600" text-anchor="start">BGE-M3 embeddings</text>
+<text x="81" y="1230" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="600" text-anchor="start">Σ<tspan baseline-shift="sub" font-size="14">g</tspan> ceil(U<tspan baseline-shift="sub" font-size="14">g</tspan> / B)</text>
+<rect x="615" y="1180" width="350" height="63" rx="9" fill="#e6f2e9" stroke="#a9cbb2" stroke-width="1"/>
+<text x="631" y="1203" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600" text-anchor="start">Writer generation</text>
+<text x="631" y="1230" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="600" text-anchor="start">A</text>
+<rect x="995" y="1180" width="540" height="63" rx="9" fill="#fff0d3" stroke="#d9bd7e" stroke-width="1"/>
+<text x="1011" y="1203" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600" text-anchor="start">Jev decisions + checks</text>
+<text x="1011" y="1230" fill="#1b2c46" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="600" text-anchor="start">R + D + A</text>
+<text x="40" y="1307" fill="#59687e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" text-anchor="start">U_g = uncached distinct inputs in ingestion group g. Cache hits skip inference; transport/schema retries can add requests.</text>
+</svg>

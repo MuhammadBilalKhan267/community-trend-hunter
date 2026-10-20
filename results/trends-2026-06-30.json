@@ -1,0 +1,140 @@
+{
+  "as_of": "2026-06-30",
+  "trends": [
+    {
+      "title": "玩家对角色立绘与皮肤建模的赞赏与需求",
+      "title_en": "Player Appreciation and Demand for Character Illustrations and Skin Models",
+      "category": "Player Appreciation and Demand for Character Illustrations and Skin Models",
+      "why": "Player Appreciation and Demand for Character Illustrations and Skin Models. Discussion increased across the observed comparison periods and continued on several recent days.",
+      "status": "growing",
+      "first_seen": "2026-06-01",
+      "voice_ids": [
+        "019e804b-ecc0-7761-b607-094a9dc30536",
+        "019e92c4-2688-7c4f-a3eb-9f379d300a43",
+        "019eac78-32b8-7c28-a02f-edd1d1d811f3",
+        "019eba21-63f8-7a7e-8c03-a029a74a5b06",
+        "019ecadb-2cb0-73d9-81c9-2054769fe3c9",
+        "019ee05e-5c88-7aa4-adc7-15a1ad50477b",
+        "019ef433-3468-70b2-82d7-765d4436f07e",
+        "019effd5-c808-70b8-86d9-f138e9e0da77",
+        "019f17ec-8f58-7ab9-9105-91bf31a52429",
+        "019f1904-ba00-7f68-b0c9-d02ab9804ac6"
+      ]
+    },
+    {
+      "title": "外挂问题与官方监管",
+      "title_en": "Cheating Issues and Official Regulation",
+      "category": "Cheating Issues and Official Regulation",
+      "why": "Cheating Issues and Official Regulation. Discussion increased across the observed comparison periods and continued on several recent days. Suggested next step: 联系游戏官方客服或举报渠道，反馈外挂问题并请求处理。",
+      "status": "growing",
+      "first_seen": "2026-06-01",
+      "voice_ids": [
+        "019e7ede-c448-7d5a-a7f4-c72e15d58f9f",
+        "019e917c-f0e8-7fac-83a1-89e0d5f99c42",
+        "019e9b52-bb98-7bd2-a194-fb50fb58ae00",
+        "019eace7-6390-7fba-af20-18d0e80a0eee",
+        "019ec008-b280-7d03-af80-dd5203c991be",
+        "019ed14e-e870-7823-82bd-49e97f860848",
+        "019ee250-64a0-719c-9383-14b6484b5aad",
+        "019efc1e-4a00-7f14-9579-0d09a4e0b9ee",
+        "019f12a1-bf50-708b-a9dc-0c1474435281",
+        "019f193c-3cf0-7c36-8f88-d3d54430c648"
+      ]
+    },
+    {
+      "title": "玩家对星环守望剧情文案质量的反馈分析",
+      "title_en": "Player Feedback on Narrative Quality of Star Ring Watch Storyline",
+      "category": "Player Feedback on Narrative Quality of Star Ring Watch Storyline",
+      "why": "Player Feedback on Narrative Quality of Star Ring Watch Storyline. Discussion increased across the observed comparison periods and continued on several recent days. Suggested next step: Collect and analyze player feedback on the narrative quality of the game's storyline to identify areas for improvement.",
+      "status": "growing",
+      "first_seen": "2026-06-01",
+      "voice_ids": [
+        "019e81eb-d568-72e3-aabb-566fa73e8a76",
+        "019e83c8-d2c8-7ea8-bf98-568235baca57",
+        "019e8895-56c8-7c1f-9039-62d65302beeb",
+        "019e8cad-53f0-72e0-9d61-5831ecde7a54",
+        "019eb1d7-ea50-72ce-ac78-d5bf78e8a6fd",
+        "019ebbae-f938-729d-a179-35bd10a79458",
+        "019ebc32-5a08-78ad-93f9-0e9e05de6a68",
+        "019ee8df-ed90-7d7e-a240-bb9b6429a096",
+        "019f0e80-4c48-725f-afab-44fa5b3eafd1",
+        "019f1771-96e0-79d2-bcb5-b328c25664cf"
+      ]
+    },
+    {
+      "title": "玩家角色搭配反馈与平衡性讨论",
+      "title_en": "Player Character Synergy Feedback and Balance Discussion",
+      "category": "Player Character Synergy Feedback and Balance Discussion",
+      "why": "Player Character Synergy Feedback and Balance Discussion. Discussion declined across the observed comparison periods; this does not establish that the issue was resolved. Suggested next step: 收集并分析玩家对角色搭配的反馈，以优化游戏内的角色平衡性。",
+      "status": "fading",
+      "first_seen": "2026-06-01",
+      "voice_ids": [
+        "019e818b-8910-7473-8b07-cc6b7b863c31",
+        "019e82e1-7838-78d2-9175-76bb40a2a7a4",
+        "019e8753-68b8-7a5a-b736-9b38fa13a3cb",
+        "019e9b70-03b0-7dae-872a-a3e5f2d8ba1a",
+        "019eddf2-6d68-710c-9ebc-cb039784f95b",
+        "019ede53-abf0-79c7-a74c-8bdf883a28e3",
+        "019ee50a-6fd8-740a-87c7-8324521b16fd",
+        "019f03c9-aee8-7468-9069-25686aa1a6d6",
+        "019f18b1-1bc0-77e5-9c1c-ec9087117704"
+      ]
+    },
+    {
+      "title": "星环守望 PVP平衡性问题",
+      "title_en": "Star Ring Watch PVP Balance Issues",
+      "category": "Star Ring Watch PVP Balance Issues",
+      "why": "Star Ring Watch PVP Balance Issues. Discussion declined across the observed comparison periods; this does not establish that the issue was resolved. This is a provisional topic interpretation; the sampled evidence remains mixed. Suggested next step: 联系游戏官方，询问关于PVP平衡性问题的处理进展，并建议收集玩家反馈以推动改进。",
+      "status": "fading",
+      "first_seen": "2026-06-02",
+      "voice_ids": [
+        "019e869e-e1e0-7036-98f8-f15824744314",
+        "019e96db-3180-7c9e-9702-12b312464d8a",
+        "019e9b0c-d510-7d11-acd1-bc6fb0cb1191",
+        "019eafa5-2400-7185-98be-9f058f36671a",
+        "019ecbba-26b8-7be3-811a-fb0f1686238e",
+        "019f0773-4a40-713e-92cd-dc82886c5ed1"
+      ]
+    },
+    {
+      "title": "玩家反馈角色伤害偏低，寻求官方调整",
+      "title_en": "Player Feedback on Low Character Damage, Seeking Official Adjustments",
+      "category": "Player Feedback on Low Character Damage, Seeking Official Adjustments",
+      "why": "Player Feedback on Low Character Damage, Seeking Official Adjustments. Discussion declined across the observed comparison periods; this does not establish that the issue was resolved. This is a provisional topic interpretation; the sampled evidence remains mixed. Suggested next step: 联系游戏官方客服或通过社区反馈渠道，提交关于角色伤害数值偏低的建议，以促进游戏平衡性调整。",
+      "status": "fading",
+      "first_seen": "2026-06-01",
+      "voice_ids": [
+        "019e833c-7530-768f-9997-8fb7135edafd",
+        "019e9346-fab8-743c-bcd1-798dc2d15e14",
+        "019eaa5c-01a8-7630-b8a5-bc620bab53f2",
+        "019eb68e-7168-78a4-995b-1774f32a7c64",
+        "019ec4bd-3dc8-7af2-8a83-bb0e91517004",
+        "019ecb10-afe8-7e8d-a19b-fb0cedb10d3f",
+        "019eceaa-7c60-7e39-a16f-ecffd6afe9b7",
+        "019eefc8-9300-7b90-b65e-824d33315f2b",
+        "019efdf0-27b8-7ebf-b339-179feb51645b",
+        "019f1822-9f30-7579-9555-fe85f0be5335"
+      ]
+    },
+    {
+      "title": "玩家对角色强度的讨论",
+      "title_en": "Player Discussions on Character Strength",
+      "category": "Player Discussions on Character Strength",
+      "why": "Player Discussions on Character Strength. Discussion declined across the observed comparison periods; this does not establish that the issue was resolved. This is a provisional topic interpretation; the sampled evidence remains mixed. Suggested next step: 收集玩家对角色强度的反馈，并分析是否需要进行角色平衡性调整。",
+      "status": "fading",
+      "first_seen": "2026-06-04",
+      "voice_ids": [
+        "019e90eb-5f48-78a5-ad86-2392e0b0f4d8",
+        "019e99d2-ce70-7c32-b491-2393b1cc5767",
+        "019e9d3a-76f8-7e32-b385-759edde02f66",
+        "019ea1bf-8218-72b7-89d1-9ccb5488a444",
+        "019ea529-af28-77e5-a275-b399d136b282",
+        "019ebde3-da98-7075-84c4-6271a1d6a2b0",
+        "019ebea0-6438-7828-91e5-b110c7f01d1e",
+        "019ed495-ab18-7cda-9fea-e7baea72e240",
+        "019edadf-5168-7eeb-acf4-c6791d1d30ef",
+        "019ef35a-31b8-7b35-ab62-684d8680c952"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2075 @@
+{
+  "schema_version": 1,
+  "fixture_status": "assistant_reviewed_development_fixtures",
+  "reviewer": "Codex assistant; no independent human Chinese-language review",
+  "purpose": "Inspect local-model relevance, stance, translation, and abstention on deliberately difficult source messages. This is a development aid, not independent human ground truth or a representative benchmark.",
+  "source_file": "voices.jsonl",
+  "selection": {
+    "method": "Deterministic, purposive source-ID list selected after local inspection. IDs are fixed in this file. Cases cover all seven platforms, June/July/August, slang, sarcasm, nicknames, missing/image content, contextual reactions, repetition, administrative text, and multiple aspects.",
+    "representative_random_sample": false,
+    "temporal_holdout": false,
+    "independent_test_set": false,
+    "limitations": [
+      "This assistant saw these records and their context before writing labels.",
+      "Cases are intentionally difficult and imbalanced; aggregate accuracy is not a population estimate.",
+      "Do not tune prompts on these cases and report their score as independent validation.",
+      "All source material is untrusted player text; alleged game behavior remains a claim.",
+      "Concern descriptions are review annotations, never a runtime topic allowlist."
+    ]
+  },
+  "definitions": {
+    "relevance": {
+      "relevant": "Contains an identifiable game-related player opinion, experience, information need, community entity/alias, or a resolvable reaction to one.",
+      "off_topic": "Under player-feedback trend extraction, routine social chatter, generic memes, and administration do not identify a game concern or opinion.",
+      "uncertain": "Available text/context is insufficient to determine relevant player feedback."
+    },
+    "stance": "positive/negative/mixed/neutral/uncertain concern the substantive game-related opinion. Neutral includes administrative/social text without product evaluation. Uncertain is required when context or polarity is unresolved.",
+    "adds_new_evidence": "Whether the message adds a substantive claim/experience beyond merely endorsing a parent. True does not mean the claim is factually verified or the account is independent. Null means unavailable.",
+    "reply_relation": "original, new_information, endorsement, same_experience, disagreement, unrelated, reaction_unknown, or uncertain.",
+    "confidence": "High/medium/low are qualitative assistant judgments, not calibrated probabilities. Exclude uncertain labels from forced binary accuracy; evaluate abstention separately.",
+    "translation": "Close literal English with bracketed explanations for emoji, inaccessible media, or repetition. Names use transliteration for readability; these are not claims about official localized names. Original text and IDs remain authoritative.",
+    "context": "Direct parent first, then ancestors if present. Context assists interpretation; it must not automatically label every child with the ancestor's topic."
+  },
+  "scoring_guidance": {
+    "confident_label_subset": "For simple label agreement, use confidence.level == high and an expected label other than uncertain. Report eligible denominators separately for relevance and stance.",
+    "abstention": "Report uncertain cases separately. Reward preserving missing evidence and unresolved targets; do not penalize safe abstention as an invented wrong polarity.",
+    "review_translation": "Use these English translations and intended meanings to inspect substantive model errors. Translation quality needs independent bilingual review before claims of validated accuracy.",
+    "leakage_control": "These fixtures may be used for development. Reserve a new, unseen, stratified sample for independent review before reporting final extraction quality.",
+    "unknown_output": "Invalid JSON, unsupported labels, or missing required fields are failures to parse and must be reported; never silently remap them into a correct answer."
+  },
+  "cases": [
+    {
+      "case_id": "dev-001",
+      "source_id": "019e7f57-95f8-7d7d-86aa-599587cee70a",
+      "literal_english_translation": "I really will thank [you]; I finally pulled Ailin.",
+      "intended_meaning": "The substantive clause celebrates obtaining the character. The stock phrase about thanking someone does not turn this into criticism.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "positive",
+        "concern_descriptions": [
+          "Celebration of obtaining Ailin"
+        ],
+        "reply_relation": "original",
+        "adds_new_evidence": true,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The final clause clearly welcomes obtaining Ailin. This positive outcome stance does not establish an entirely positive emotional tone."
+      },
+      "ambiguity": [
+        "This is a self-reported pull result, not evidence of drop rates.",
+        "The pull outcome is clearly welcomed, but the whole affect can mix relief with exasperation about the earlier wait; it need not be uniformly happy."
+      ],
+      "review_tags": [
+        "slang",
+        "positive",
+        "gacha"
+      ],
+      "source_text": "我真的会谢，终于抽到艾琳了",
+      "source_title": null,
+      "platform": "Discord",
+      "channel": "#抽卡分享",
+      "created_at": "2026-06-01T02:41:47+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-002",
+      "source_id": "019e7fb8-dc50-71ea-a662-d829c252c20a",
+      "literal_english_translation": "I really will thank [you]; frame rate is unstable at high graphics settings, please optimize. In team fights the frame drops turn it into PowerPoint. [doge emoji]",
+      "intended_meaning": "Complains that frame drops make team fights look like a slide presentation and requests optimization.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Frame instability at high graphics settings",
+          "Severe frame drops in team fights"
+        ],
+        "reply_relation": "original",
+        "adds_new_evidence": true,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "The doge emoji does not erase the explicit performance complaint."
+      ],
+      "review_tags": [
+        "slang",
+        "negative",
+        "performance"
+      ],
+      "source_text": "我真的会谢，高画质下帧数不稳定，求优化\n团战掉帧掉成PPT了<emoji:脱单doge>",
+      "source_title": null,
+      "platform": "Bilibili",
+      "channel": "星环守望官方号",
+      "created_at": "2026-06-01T04:28:02+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-003",
+      "source_id": "019e7f03-d878-7f2e-97ed-3babc54513b0",
+      "literal_english_translation": "I cannot hold it together; the drop rate in this limited banner feels all right! A miracle from a single pull, Miya obtained! ???",
+      "intended_meaning": "Expresses excitement and a favorable subjective impression of pulls. 'Cannot hold it together' can convey excitement as well as distress.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "positive",
+        "concern_descriptions": [
+          "Favorable subjective limited-banner pull experience"
+        ],
+        "reply_relation": "original",
+        "adds_new_evidence": true,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "One lucky result cannot validate the published probability."
+      ],
+      "review_tags": [
+        "slang",
+        "positive",
+        "gacha"
+      ],
+      "source_text": "绷不住了，這期限定池出貨率感覺還行！单抽出奇迹，米娅到手！？？？",
+      "source_title": null,
+      "platform": "Weibo",
+      "channel": "@星环守望",
+      "created_at": "2026-06-01T01:10:19+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-004",
+      "source_id": "019fa101-e1f8-742d-9718-226d1fb11fed",
+      "literal_english_translation": "The planners do understand players; they understand how to quietly change the probabilities. (",
+      "intended_meaning": "Uses apparent praise sarcastically to accuse the designers of covertly changing rates.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Alleged undisclosed probability changes"
+        ],
+        "reply_relation": "original",
+        "adds_new_evidence": true,
+        "abstain_from": [
+          "Concluding that an actual probability change occurred"
+        ]
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "The allegation is not proof that probabilities changed.",
+        "The unfinished parenthesis is expressive punctuation, not a separate claim."
+      ],
+      "review_tags": [
+        "sarcasm",
+        "allegation"
+      ],
+      "source_text": "策划是懂玩家的，懂得怎么悄悄改概率（",
+      "source_title": null,
+      "platform": "TapTap",
+      "channel": "评价",
+      "created_at": "2026-07-27T08:38:03+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-005",
+      "source_id": "019e8c2e-c580-7041-a46b-a906e8bc3575",
+      "literal_english_translation": "To be fair, this round counts as forcing spending. Small monthly card + large monthly card + battle pass: at least 128 a month; I cannot afford to play...",
+      "intended_meaning": "Complains about cumulative recurring purchase pressure and affordability.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Recurring monetization cost and perceived pressure to spend"
+        ],
+        "reply_relation": "original",
+        "adds_new_evidence": true,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "128 is a quoted player amount; currency and exact product rules are not independently verified."
+      ],
+      "review_tags": [
+        "monetization",
+        "multiple_purchase_types"
+      ],
+      "source_text": "讲道理这波属于是逼氪了  小月卡+大月卡+通行证，一个月128起步，玩不起了。。。",
+      "source_title": null,
+      "platform": "QQ",
+      "channel": "星环守望官方玩家3群",
+      "created_at": "2026-06-03T14:32:16+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-006",
+      "source_id": "019f3352-1c18-7bab-84df-44a36a7fdb7b",
+      "literal_english_translation": "Ailin = iron pot; newcomers, do not be confused. QAQ",
+      "intended_meaning": "Explains a community nickname. This is on-topic community language, without an explicit product complaint or praise.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "neutral",
+        "concern_descriptions": [
+          "Ailin / iron-pot nickname"
+        ],
+        "reply_relation": "new_information",
+        "adds_new_evidence": true,
+        "abstain_from": [
+          "Inferring character class, strength, or mechanics from the nickname"
+        ]
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "This sentence alone does not explain the nickname's origin or character mechanics.",
+        "QAQ is a crying-face text emoticon; it does not establish a negative opinion about the character."
+      ],
+      "review_tags": [
+        "nickname",
+        "alias",
+        "slang"
+      ],
+      "source_text": "艾琳=铁锅，新人别懵QAQ",
+      "source_title": null,
+      "platform": "Bilibili",
+      "channel": "星环守望官方号",
+      "created_at": "2026-07-06T01:27:27+08:00",
+      "parent_id": "019efce8-c5f0-790f-ab2b-de17e5b7fbab",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019efce8-c5f0-790f-ab2b-de17e5b7fbab"
+      ],
+      "context": [
+        {
+          "source_id": "019efce8-c5f0-790f-ab2b-de17e5b7fbab",
+          "source_text": "详情见图<image:42ef06408b624cf4a952bc8dbc991198462ab71d9938bde9f2f9386fd413406e>",
+          "source_title": "【星环守望】周年预热直播回放",
+          "platform": "Bilibili",
+          "created_at": "2026-06-25T11:52:54+08:00",
+          "parent_id": null,
+          "literal_english_translation": "See the image for details. [image reference]",
+          "source_title_english_translation": "[Xinghuan Shouwang] Anniversary warm-up livestream replay"
+        }
+      ]
+    },
+    {
+      "case_id": "dev-007",
+      "source_id": "019f37ad-67b8-7ee3-9c77-c17cddae3cbb",
+      "literal_english_translation": "Outrageous; this shield of Ailin's really looks like a pot, haha. Ailin = iron pot; newcomers, do not be confused. [custom crying emoji]",
+      "intended_meaning": "Jokes about the appearance of Ailin's shield and explains the nickname. The wording supports a visual comparison, not a precise mechanics claim.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "neutral",
+        "concern_descriptions": [
+          "Ailin nickname and pot-like shield appearance"
+        ],
+        "reply_relation": "original",
+        "adds_new_evidence": true,
+        "abstain_from": [
+          "Inferring balance strength or an official nickname origin"
+        ]
+      },
+      "confidence": {
+        "level": "medium",
+        "rationale": "The evaluative force of 'outrageous' and the crying emoji is unclear; they can be playful."
+      },
+      "ambiguity": [
+        "The evaluative force of 'outrageous' and the crying emoji is unclear; they can be playful.",
+        "The text does not establish whether the shield is too strong or too weak."
+      ],
+      "review_tags": [
+        "nickname",
+        "traditional_chinese",
+        "playful"
+      ],
+      "source_text": "離譜，艾琳這個盾，真的像口鍋哈哈\n艾琳=鐵鍋，新人別懵<:xh_cry:1184769624378724482>",
+      "source_title": null,
+      "platform": "Discord",
+      "channel": "#綜合聊天",
+      "created_at": "2026-07-06T21:45:39+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-008",
+      "source_id": "019ea362-1a40-7b3d-9416-c15e67fa45c6",
+      "literal_english_translation": "I cannot hold it together; an unlucky player reporting in: 160 pulls and not one gold; an unlucky player reporting in: 300 pulls and not one gold! Baiye and Yifu came together; what a good day this is.",
+      "intended_meaning": "Juxtaposes dry-streak complaints with a lucky-pull celebration. The periods are unspecified: a 160-pull dry streak could precede a longer 300-pull streak and subsequent success, or the claims could describe separate periods. Preserve both stances and the unresolved timing.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "mixed",
+        "concern_descriptions": [
+          "Juxtaposed unlucky and lucky gacha experiences with unresolved timing"
+        ],
+        "reply_relation": "original",
+        "adds_new_evidence": true,
+        "abstain_from": [
+          "Treating all numerical pull statements as one verified history"
+        ]
+      },
+      "confidence": {
+        "level": "medium",
+        "rationale": "Both frustration and celebration are explicit, while their chronology and factual relationship remain unresolved."
+      },
+      "ambiguity": [
+        "The text does not say whether the 160-pull count, 300-pull count, and lucky result describe the same banner or period.",
+        "The claims are not logically contradictory without a shared timeline; do not invent either inconsistency or one verified continuous history.",
+        "Do not infer actual pull odds from these self-reported outcomes."
+      ],
+      "review_tags": [
+        "slang",
+        "unresolved_timeline",
+        "multi_aspect"
+      ],
+      "source_text": "绷不住了，非酋报道，160抽一个金都没有，非酋报道，300抽一个金都没有！白夜和伊芙一起出了，今天是什么好日子",
+      "source_title": null,
+      "platform": "QQ",
+      "channel": "星环守望官方玩家3群",
+      "created_at": "2026-06-08T02:39:36+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-009",
+      "source_id": "019e7ef7-bae8-7741-af63-7c29eb7effbc",
+      "literal_english_translation": "QQ group steward: @Baige Wang, welcome to the Xinghuan Shouwang player group. Please read the group notice first. For BUG feedback, please privately message the administrators.",
+      "intended_meaning": "Administrative welcome text gives instructions. It is not a player reporting a bug merely because the word BUG appears.",
+      "expected": {
+        "relevance": "off_topic",
+        "stance": "neutral",
+        "concern_descriptions": [],
+        "reply_relation": "original",
+        "adds_new_evidence": false,
+        "abstain_from": [
+          "Counting this as a bug report"
+        ]
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "The format is bot-like, but there is no verified bot-account field."
+      ],
+      "review_tags": [
+        "administrative",
+        "bot_like",
+        "keyword_trap"
+      ],
+      "source_text": "Q群管家: @白给王 欢迎来到星环守望玩家群，请先阅读群公告，BUG反馈请私聊管理。",
+      "source_title": null,
+      "platform": "QQ",
+      "channel": "星环守望官方玩家1群",
+      "created_at": "2026-06-01T00:57:05+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-010",
+      "source_id": "019e8365-2b10-7b7f-95a8-8cfd2e0997f7",
+      "literal_english_translation": "Good night.",
+      "intended_meaning": "A social farewell remains a farewell under an official guide post; parent relevance should not automatically transfer to the child.",
+      "expected": {
+        "relevance": "off_topic",
+        "stance": "neutral",
+        "concern_descriptions": [],
+        "reply_relation": "unrelated",
+        "adds_new_evidence": false,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [],
+      "review_tags": [
+        "greeting",
+        "parent_topic_leakage"
+      ],
+      "source_text": "晚安",
+      "source_title": null,
+      "platform": "Bilibili",
+      "channel": "星环守望官方号",
+      "created_at": "2026-06-01T21:35:06+08:00",
+      "parent_id": "019e8143-dd68-76a3-8b18-d3a5b3793fd3",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019e8143-dd68-76a3-8b18-d3a5b3793fd3"
+      ],
+      "context": [
+        {
+          "source_id": "019e8143-dd68-76a3-8b18-d3a5b3793fd3",
+          "source_text": "详情见图<image:f49304e153f2dcdab4ade2a2e9404047f56f64d4e10bed17932bb5863180881f>",
+          "source_title": "【星环守望】每周攻略速递 第1期",
+          "platform": "Bilibili",
+          "created_at": "2026-06-01T11:39:29+08:00",
+          "parent_id": null,
+          "literal_english_translation": "See the image for details. [image reference]",
+          "source_title_english_translation": "[Xinghuan Shouwang] Weekly strategy digest, issue 1"
+        }
+      ]
+    },
+    {
+      "case_id": "dev-011",
+      "source_id": "019e8167-efc8-75bb-812d-a42c157fa2c0",
+      "literal_english_translation": null,
+      "intended_meaning": "There is no text, title, or parent context available for interpreting this record.",
+      "expected": {
+        "relevance": "uncertain",
+        "stance": "uncertain",
+        "concern_descriptions": [],
+        "reply_relation": "original",
+        "adds_new_evidence": null,
+        "abstain_from": [
+          "Assigning a topic or sentiment to unavailable content"
+        ]
+      },
+      "confidence": {
+        "level": "low",
+        "rationale": "Missing content is absence of evidence, not evidence of off-topic or negative content."
+      },
+      "ambiguity": [
+        "Missing content is absence of evidence, not evidence of off-topic or negative content."
+      ],
+      "review_tags": [
+        "missing_content",
+        "abstention"
+      ],
+      "source_text": null,
+      "source_title": null,
+      "platform": "QQ",
+      "channel": "星环守望官方玩家1群",
+      "created_at": "2026-06-01T12:18:53+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-012",
+      "source_id": "019e8143-dd68-76a3-8b18-d3a5b3793fd3",
+      "literal_english_translation": "See the image for details. [image reference]",
+      "intended_meaning": "The title identifies an official weekly guide. The image itself is unavailable as readable evidence, and there is no player opinion in the available text.",
+      "expected": {
+        "relevance": "uncertain",
+        "stance": "uncertain",
+        "concern_descriptions": [],
+        "reply_relation": "original",
+        "adds_new_evidence": false,
+        "abstain_from": [
+          "Inventing image contents",
+          "Treating an official post as a player complaint"
+        ]
+      },
+      "confidence": {
+        "level": "low",
+        "rationale": "The title is event/context metadata; it does not reveal the unseen image details or a player's stance."
+      },
+      "ambiguity": [
+        "The title is event/context metadata; it does not reveal the unseen image details or a player's stance."
+      ],
+      "review_tags": [
+        "image_only",
+        "official_context",
+        "abstention"
+      ],
+      "source_text": "详情见图<image:f49304e153f2dcdab4ade2a2e9404047f56f64d4e10bed17932bb5863180881f>",
+      "source_title": "【星环守望】每周攻略速递 第1期",
+      "platform": "Bilibili",
+      "channel": "星环守望官方号",
+      "created_at": "2026-06-01T11:39:29+08:00",
+      "parent_id": null,
+      "source_title_english_translation": "[Xinghuan Shouwang] Weekly strategy digest, issue 1",
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-013",
+      "source_id": "019f3144-98d8-7133-bb90-f27d43d602fd",
+      "literal_english_translation": "May I ask, [image reference] is this texture clipping through the model? ... [image reference] is this texture clipping through the model? [image reference] is this texture clipping through the model? [linked reaction GIF]",
+      "intended_meaning": "Asks whether screenshots show a visual clipping problem. This is a potential visual issue report even though the screenshots cannot be inspected.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "uncertain",
+        "concern_descriptions": [
+          "Possible texture/model clipping"
+        ],
+        "reply_relation": "new_information",
+        "adds_new_evidence": true,
+        "abstain_from": [
+          "Confirming the unseen visual defect"
+        ]
+      },
+      "confidence": {
+        "level": "medium",
+        "rationale": "The text asks a question; the actual defect cannot be confirmed without the images."
+      },
+      "ambiguity": [
+        "The text asks a question; the actual defect cannot be confirmed without the images.",
+        "Three repeated clauses do not establish three independent affected people or defects."
+      ],
+      "review_tags": [
+        "image_with_text",
+        "repetition",
+        "question"
+      ],
+      "source_text": "求問，<image:9be234ba26bed8fd4ef93cd7415be6b01477308f9ab5a7d53bf30cb453102190>這個貼圖是不是穿模了……<image:8a9edfc0818a211da85c8619b49cab35ac13b495807699cfbfe3bcf7cd074420>這個貼圖是不是穿模了\n<image:707d3a6537431442cdd17d7675b7729eb15e6e529460f5f4c6df42dcbae010ef>這個貼圖是不是穿模了https://i2.bahamut.com.tw/editor/emotion/20.gif",
+      "source_title": null,
+      "platform": "Bahamut",
+      "channel": "星環守望 哈啦板",
+      "created_at": "2026-07-05T15:53:27+08:00",
+      "parent_id": "019e8b73-5908-7125-b061-d4aba63ff7b0",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019e8b73-5908-7125-b061-d4aba63ff7b0"
+      ],
+      "context": [
+        {
+          "source_id": "019e8b73-5908-7125-b061-d4aba63ff7b0",
+          "source_text": "如題",
+          "source_title": "【心得】新手入坑指南",
+          "platform": "Bahamut",
+          "created_at": "2026-06-03T11:07:33+08:00",
+          "parent_id": null,
+          "literal_english_translation": "As in the title.",
+          "source_title_english_translation": "[Experience] Beginner's guide to getting started"
+        }
+      ]
+    },
+    {
+      "case_id": "dev-014",
+      "source_id": "019e8239-bad0-7c12-a54f-52bf2666aae1",
+      "literal_english_translation": "+1.",
+      "intended_meaning": "A standalone agreement token has no linked target. No topic or positive/negative stance can be recovered from this record alone.",
+      "expected": {
+        "relevance": "uncertain",
+        "stance": "uncertain",
+        "concern_descriptions": [],
+        "reply_relation": "reaction_unknown",
+        "adds_new_evidence": false,
+        "abstain_from": [
+          "Assigning a topic or polarity without a target"
+        ]
+      },
+      "confidence": {
+        "level": "low",
+        "rationale": "The platform and channel do not establish what the writer agrees with."
+      },
+      "ambiguity": [
+        "The platform and channel do not establish what the writer agrees with."
+      ],
+      "review_tags": [
+        "short_reply",
+        "missing_context",
+        "abstention"
+      ],
+      "source_text": "+1",
+      "source_title": null,
+      "platform": "Bahamut",
+      "channel": "星環守望 哈啦板",
+      "created_at": "2026-06-01T16:08:02+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-015",
+      "source_id": "019e8381-e688-7f22-baa6-5508369e99ff",
+      "literal_english_translation": "+1.",
+      "intended_meaning": "A reaction under an official image-based guide has no clear player claim to endorse. It is not an independent issue report.",
+      "expected": {
+        "relevance": "uncertain",
+        "stance": "uncertain",
+        "concern_descriptions": [],
+        "reply_relation": "reaction_unknown",
+        "adds_new_evidence": false,
+        "abstain_from": [
+          "Turning a generic official-post reaction into issue support"
+        ]
+      },
+      "confidence": {
+        "level": "low",
+        "rationale": "The official parent identifies a broad guide, not a specific sentiment or issue."
+      },
+      "ambiguity": [
+        "The official parent identifies a broad guide, not a specific sentiment or issue."
+      ],
+      "review_tags": [
+        "short_reply",
+        "official_context",
+        "abstention"
+      ],
+      "source_text": "+1",
+      "source_title": null,
+      "platform": "Bilibili",
+      "channel": "星环守望官方号",
+      "created_at": "2026-06-01T22:06:29+08:00",
+      "parent_id": "019e8143-dd68-76a3-8b18-d3a5b3793fd3",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019e8143-dd68-76a3-8b18-d3a5b3793fd3"
+      ],
+      "context": [
+        {
+          "source_id": "019e8143-dd68-76a3-8b18-d3a5b3793fd3",
+          "source_text": "详情见图<image:f49304e153f2dcdab4ade2a2e9404047f56f64d4e10bed17932bb5863180881f>",
+          "source_title": "【星环守望】每周攻略速递 第1期",
+          "platform": "Bilibili",
+          "created_at": "2026-06-01T11:39:29+08:00",
+          "parent_id": null,
+          "literal_english_translation": "See the image for details. [image reference]",
+          "source_title_english_translation": "[Xinghuan Shouwang] Weekly strategy digest, issue 1"
+        }
+      ]
+    },
+    {
+      "case_id": "dev-016",
+      "source_id": "019eaa5d-4fbe-79a8-9f5c-02fe39c8ac66",
+      "literal_english_translation": "+1.",
+      "intended_meaning": "Endorses the direct parent's complaint about waiting five minutes for matchmaking. Treat this as contextual support, without adding invented detail.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Long matchmaking waits"
+        ],
+        "reply_relation": "endorsement",
+        "adds_new_evidence": false,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "The reply does not separately state that this writer waited exactly five minutes."
+      ],
+      "review_tags": [
+        "short_reply",
+        "contextual_endorsement"
+      ],
+      "source_text": "+1",
+      "source_title": null,
+      "platform": "TapTap",
+      "channel": "评价",
+      "created_at": "2026-06-09T11:11:42.526458+08:00",
+      "parent_id": "019eaa2d-fc68-742d-9b17-8efeec901990",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019eaa2d-fc68-742d-9b17-8efeec901990"
+      ],
+      "context": [
+        {
+          "source_id": "019eaa2d-fc68-742d-9b17-8efeec901990",
+          "source_text": "家人们，匹配时间太长了，等五分钟",
+          "source_title": null,
+          "platform": "TapTap",
+          "created_at": "2026-06-09T10:20:01+08:00",
+          "parent_id": null,
+          "literal_english_translation": "Everyone, matchmaking takes too long; I have been waiting five minutes.",
+          "source_title_english_translation": null
+        }
+      ]
+    },
+    {
+      "case_id": "dev-017",
+      "source_id": "019ea247-3b51-7cca-8f38-1e226eee9ba8",
+      "literal_english_translation": "+1.",
+      "intended_meaning": "Endorses a story-related reaction whose parent combines emotional hurt with explicit praise for the event writing. The likely quality stance is positive, but the reply does not select one precise clause.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "positive",
+        "concern_descriptions": [
+          "Reaction to story emotional impact and writing quality"
+        ],
+        "reply_relation": "endorsement",
+        "adds_new_evidence": false,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "medium",
+        "rationale": "The parent explicitly praises the writing, but +1 does not specify whether it endorses that praise, the emotional reaction, or both."
+      },
+      "ambiguity": [
+        "The exact endorsed clause is unspecified; an emotionally painful story is not necessarily a negative quality judgment.",
+        "The reply does not add a new story example or an independent quality measurement."
+      ],
+      "review_tags": [
+        "short_reply",
+        "contextual_endorsement"
+      ],
+      "source_text": "+1",
+      "source_title": null,
+      "platform": "Steam",
+      "channel": "评测",
+      "created_at": "2026-06-07T21:30:37.777913+08:00",
+      "parent_id": "019ea1fd-2758-7574-83dc-1769d1452207",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019ea1fd-2758-7574-83dc-1769d1452207"
+      ],
+      "context": [
+        {
+          "source_id": "019ea1fd-2758-7574-83dc-1769d1452207",
+          "source_text": "啊这，卡戎的个人剧情好刀\n这次活动剧情文案质量很高。。。",
+          "source_title": null,
+          "platform": "Steam",
+          "created_at": "2026-06-07T20:09:43+08:00",
+          "parent_id": null,
+          "literal_english_translation": "Uh, Karong's personal story really hurts emotionally. The writing quality of this event's story is very high...",
+          "source_title_english_translation": null
+        }
+      ]
+    },
+    {
+      "case_id": "dev-018",
+      "source_id": "019eb455-97ab-7f08-b356-b839b3757e8b",
+      "literal_english_translation": "+1.",
+      "intended_meaning": "The parent juxtaposes a lucky single-pull celebration and a no-gold complaint without specifying their periods. The reaction could endorse either clause or the overall joke, so its target and polarity remain unresolved.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "uncertain",
+        "concern_descriptions": [
+          "Unresolved reaction to juxtaposed gacha experiences"
+        ],
+        "reply_relation": "uncertain",
+        "adds_new_evidence": false,
+        "abstain_from": [
+          "Choosing which juxtaposed parent claim the writer endorses"
+        ]
+      },
+      "confidence": {
+        "level": "low",
+        "rationale": "The parent supplies game context, but the reply does not identify its target or stance."
+      },
+      "ambiguity": [
+        "The reaction could target the lucky outcome, unlucky streak, or overall joke; a single polarity is unsupported.",
+        "The parent does not provide a shared timeline, so the juxtaposed claims need not be contradictory."
+      ],
+      "review_tags": [
+        "short_reply",
+        "unresolved_timeline",
+        "abstention"
+      ],
+      "source_text": "+1",
+      "source_title": null,
+      "platform": "Steam",
+      "channel": "评测",
+      "created_at": "2026-06-11T09:39:28.811794+08:00",
+      "parent_id": "019eb454-e4b8-731b-8623-8c1b6af6fd4f",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019eb454-e4b8-731b-8623-8c1b6af6fd4f"
+      ],
+      "context": [
+        {
+          "source_id": "019eb454-e4b8-731b-8623-8c1b6af6fd4f",
+          "source_text": "笑死，单抽出奇迹，米娅到手！\n非酋报道，300抽一个金都木有",
+          "source_title": null,
+          "platform": "Steam",
+          "created_at": "2026-06-11T09:38:43+08:00",
+          "parent_id": null,
+          "literal_english_translation": "Laughing to death, a miracle from one pull: Miya obtained! An unlucky player reporting in: 300 pulls and not one gold.",
+          "source_title_english_translation": null
+        }
+      ]
+    },
+    {
+      "case_id": "dev-019",
+      "source_id": "019e81bd-649a-77b3-9a24-0d4dbec60195",
+      "literal_english_translation": "Surely it is not to that extent???",
+      "intended_meaning": "Pushes back on strong praise of art and a skin model. This is disagreement with the degree of praise, not proof that the writer dislikes the art.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "uncertain",
+        "concern_descriptions": [
+          "Disagreement with the intensity of art praise"
+        ],
+        "reply_relation": "disagreement",
+        "adds_new_evidence": false,
+        "abstain_from": [
+          "Converting disagreement into an explicit negative review"
+        ]
+      },
+      "confidence": {
+        "level": "medium",
+        "rationale": "The degree of disagreement and final aesthetic stance remain unspecified."
+      },
+      "ambiguity": [
+        "The degree of disagreement and final aesthetic stance remain unspecified."
+      ],
+      "review_tags": [
+        "disagreement",
+        "context_required"
+      ],
+      "source_text": "不至于吧？？？",
+      "source_title": null,
+      "platform": "Discord",
+      "channel": "#抽卡分享",
+      "created_at": "2026-06-01T13:52:13.466743+08:00",
+      "parent_id": "019e81b7-e488-7a81-96d5-ff6fc55f0b2a",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019e81b7-e488-7a81-96d5-ff6fc55f0b2a"
+      ],
+      "context": [
+        {
+          "source_id": "019e81b7-e488-7a81-96d5-ff6fc55f0b2a",
+          "source_text": "啊這，立繪真的絕美  這個皮膚建模好精緻 求卡戎的高畫質立繪原圖😋",
+          "source_title": null,
+          "platform": "Discord",
+          "created_at": "2026-06-01T13:46:13+08:00",
+          "parent_id": null,
+          "literal_english_translation": "Uh, the character illustration is truly gorgeous. This skin's model is so finely made. Please give the high-quality original illustration for Karong. [delighted face]",
+          "source_title_english_translation": null
+        }
+      ]
+    },
+    {
+      "case_id": "dev-020",
+      "source_id": "019e8abb-cb19-7b78-9c41-390605d02f30",
+      "literal_english_translation": "Me too.",
+      "intended_meaning": "Reports sharing the direct parent's pity-pull experience. This adds a claim of shared experience without new numbers or conditions.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Repeatedly reaching gacha pity"
+        ],
+        "reply_relation": "same_experience",
+        "adds_new_evidence": true,
+        "abstain_from": [
+          "Inventing a pull count"
+        ]
+      },
+      "confidence": {
+        "level": "medium",
+        "rationale": "The parent also uses playful language about luck; the reaction does not identify an exact pull history."
+      },
+      "ambiguity": [
+        "The parent also uses playful language about luck; the reaction does not identify an exact pull history."
+      ],
+      "review_tags": [
+        "short_reply",
+        "shared_experience"
+      ],
+      "source_text": "我也是",
+      "source_title": null,
+      "platform": "Discord",
+      "channel": "#綜合聊天",
+      "created_at": "2026-06-03T07:47:03.577247+08:00",
+      "parent_id": "019e8aad-8480-76a6-9e4b-afcb5e4cf34b",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019e8aad-8480-76a6-9e4b-afcb5e4cf34b"
+      ],
+      "context": [
+        {
+          "source_id": "019e8aad-8480-76a6-9e4b-afcb5e4cf34b",
+          "source_text": "繃不住了，又是吃保底的一天  我的gacha運氣全用在洛克身上了👍🏿",
+          "source_title": null,
+          "platform": "Discord",
+          "created_at": "2026-06-03T07:31:28+08:00",
+          "parent_id": null,
+          "literal_english_translation": "I cannot hold it together; another day of reaching pity. All my gacha luck went to Luoke. [thumbs-up]",
+          "source_title_english_translation": null
+        }
+      ]
+    },
+    {
+      "case_id": "dev-021",
+      "source_id": "019e8b34-22fa-7f09-acd8-0774815f5d29",
+      "literal_english_translation": "Indeed.",
+      "intended_meaning": "Agrees with a parent that mixes a character-choice question, a favorable rate impression, and a pity-inheritance question. The endorsed clause is unknown.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "uncertain",
+        "concern_descriptions": [
+          "Unresolved reaction to a multi-clause gacha discussion"
+        ],
+        "reply_relation": "uncertain",
+        "adds_new_evidence": false,
+        "abstain_from": [
+          "Assigning the parent's positive clause to this reaction automatically"
+        ]
+      },
+      "confidence": {
+        "level": "low",
+        "rationale": "A topic family can be inferred from the parent, but no single concern or sentiment can be selected confidently."
+      },
+      "ambiguity": [
+        "A topic family can be inferred from the parent, but no single concern or sentiment can be selected confidently."
+      ],
+      "review_tags": [
+        "short_reply",
+        "multi_aspect",
+        "abstention"
+      ],
+      "source_text": "确实",
+      "source_title": null,
+      "platform": "QQ",
+      "channel": "星环守望官方玩家3群",
+      "created_at": "2026-06-03T09:58:30.394723+08:00",
+      "parent_id": "019e8b03-e1e0-7ad0-8857-69f438707096",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019e8b03-e1e0-7ad0-8857-69f438707096"
+      ],
+      "context": [
+        {
+          "source_id": "019e8b03-e1e0-7ad0-8857-69f438707096",
+          "source_text": "离谱，攒了12000个星晶，下个池子抽艾琳还是白夜？  這期常驻池出貨率感覺還行……求问常驻池的保底是继承的吗<emoji:qq-face-264>",
+          "source_title": null,
+          "platform": "QQ",
+          "created_at": "2026-06-03T09:05:48+08:00",
+          "parent_id": null,
+          "literal_english_translation": "Outrageous; I saved 12,000 star crystals. Should I pull Ailin or Baiye in the next banner? This standard banner's drop rate feels all right... May I ask whether pity carries over for the standard banner? [QQ emoji]",
+          "source_title_english_translation": null
+        }
+      ]
+    },
+    {
+      "case_id": "dev-022",
+      "source_id": "019e8ddc-f280-7609-baa4-9608949c2e1a",
+      "literal_english_translation": "Oh my, a repeating machine.",
+      "intended_meaning": "A stock meme about repetition. It contains no identified game feature, experience, or linked target.",
+      "expected": {
+        "relevance": "off_topic",
+        "stance": "neutral",
+        "concern_descriptions": [],
+        "reply_relation": "original",
+        "adds_new_evidence": false,
+        "abstain_from": [
+          "Inferring coordination from text duplication"
+        ]
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "Repeated use of a meme is not sufficient evidence of a coordinated campaign."
+      ],
+      "review_tags": [
+        "meme",
+        "exact_repeat",
+        "noise"
+      ],
+      "source_text": "我勒个复读机",
+      "source_title": null,
+      "platform": "QQ",
+      "channel": "星环守望官方玩家1群",
+      "created_at": "2026-06-03T22:22:08+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-023",
+      "source_id": "019e9282-33b8-73ad-8f9a-4a6966f6db0c",
+      "literal_english_translation": "Oh my, a repeating machine.",
+      "intended_meaning": "The same meme appears on another platform under an official guide. The parent does not turn it into a substantive product opinion.",
+      "expected": {
+        "relevance": "off_topic",
+        "stance": "neutral",
+        "concern_descriptions": [],
+        "reply_relation": "unrelated",
+        "adds_new_evidence": false,
+        "abstain_from": [
+          "Merging cross-platform identities",
+          "Inferring coordination from text duplication"
+        ]
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "This has the same text as dev-022, but display names and repetition cannot establish that the accounts are the same person or bots."
+      ],
+      "review_tags": [
+        "meme",
+        "exact_repeat",
+        "cross_platform",
+        "parent_topic_leakage"
+      ],
+      "source_text": "我勒个复读机",
+      "source_title": null,
+      "platform": "Bilibili",
+      "channel": "星环守望官方号",
+      "created_at": "2026-06-04T20:01:07+08:00",
+      "parent_id": "019e8143-dd68-76a3-8b18-d3a5b3793fd3",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019e8143-dd68-76a3-8b18-d3a5b3793fd3"
+      ],
+      "context": [
+        {
+          "source_id": "019e8143-dd68-76a3-8b18-d3a5b3793fd3",
+          "source_text": "详情见图<image:f49304e153f2dcdab4ade2a2e9404047f56f64d4e10bed17932bb5863180881f>",
+          "source_title": "【星环守望】每周攻略速递 第1期",
+          "platform": "Bilibili",
+          "created_at": "2026-06-01T11:39:29+08:00",
+          "parent_id": null,
+          "literal_english_translation": "See the image for details. [image reference]",
+          "source_title_english_translation": "[Xinghuan Shouwang] Weekly strategy digest, issue 1"
+        }
+      ]
+    },
+    {
+      "case_id": "dev-024",
+      "source_id": "019e7ed5-a458-7b28-92c3-ac76579e4704",
+      "literal_english_translation": "Anyone want to play together?",
+      "intended_meaning": "A generic invitation to find someone to play with. Under the fixture's feedback-analysis scope it is social chatter, without a specific product need or defect.",
+      "expected": {
+        "relevance": "off_topic",
+        "stance": "neutral",
+        "concern_descriptions": [],
+        "reply_relation": "original",
+        "adds_new_evidence": false,
+        "abstain_from": [
+          "Interpreting a play invitation as a matchmaking failure"
+        ]
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "This would be relevant to a separate community-matchmaking analysis; it is not evidence of a matchmaking bug or requested in-game feature."
+      ],
+      "review_tags": [
+        "social_chat",
+        "scope_sensitive"
+      ],
+      "source_text": "有人一起玩吗",
+      "source_title": null,
+      "platform": "Discord",
+      "channel": "#綜合聊天",
+      "created_at": "2026-06-01T00:19:51+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-025",
+      "source_id": "019f1a74-3ff0-7be2-a29d-2d505f889d64",
+      "literal_english_translation": "I will stop thinking about it: Genshin! Start! [QQ emoji]",
+      "intended_meaning": "Uses another game's launch catchphrase. It could be a meme or a move to another game; no reason or definite churn commitment is stated.",
+      "expected": {
+        "relevance": "uncertain",
+        "stance": "uncertain",
+        "concern_descriptions": [],
+        "reply_relation": "original",
+        "adds_new_evidence": false,
+        "abstain_from": [
+          "Claiming actual churn or its cause"
+        ]
+      },
+      "confidence": {
+        "level": "low",
+        "rationale": "Do not infer that the player has quit the target game or why."
+      },
+      "ambiguity": [
+        "Do not infer that the player has quit the target game or why."
+      ],
+      "review_tags": [
+        "cross_game_meme",
+        "possible_churn",
+        "abstention"
+      ],
+      "source_text": "不想了，原神！启动！<emoji:qq-face-178>",
+      "source_title": null,
+      "platform": "QQ",
+      "channel": "星环守望官方玩家1群",
+      "created_at": "2026-07-01T05:34:14+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-026",
+      "source_id": "019fb905-c940-7fa0-b1c0-7da1d77d5cb4",
+      "literal_english_translation": "#Xinghuan Shouwang# As an old player, let me say: please suggest team-building ideas for Miya. Luoke with Yifu is quite useful in the Abyss. QAQ",
+      "intended_meaning": "Requests team-building guidance and praises a composition. Despite the maintenance-announcement parent, this child does not report downtime.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "positive",
+        "concern_descriptions": [
+          "Miya team-building information need",
+          "Positive experience with a Luoke/Yifu composition"
+        ],
+        "reply_relation": "new_information",
+        "adds_new_evidence": true,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "The positive stance concerns the named composition; the question itself is neutral.",
+        "The parent announcement must not supply a server topic absent from the child."
+      ],
+      "review_tags": [
+        "parent_topic_leakage",
+        "multi_aspect"
+      ],
+      "source_text": "#星环守望# 老玩家说句话，求米娅的配队思路。洛克配伊芙打深渊还挺好用的QAQ",
+      "source_title": null,
+      "platform": "Weibo",
+      "channel": "@星环守望",
+      "created_at": "2026-08-01T00:33:12+08:00",
+      "parent_id": "019fb12a-8a58-7670-b066-45d5b9e1a3f7",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019fb12a-8a58-7670-b066-45d5b9e1a3f7"
+      ],
+      "context": [
+        {
+          "source_id": "019fb12a-8a58-7670-b066-45d5b9e1a3f7",
+          "source_text": "详情见图<image:949459e2292af39b738f705e38ad6c8fb6bc1dbccba74f8ceab772a44e1bbac5>",
+          "source_title": "#星环守望# 2.1版本停服维护公告",
+          "platform": "Weibo",
+          "created_at": "2026-07-30T11:56:23+08:00",
+          "parent_id": null,
+          "literal_english_translation": "See the image for details. [image reference]",
+          "source_title_english_translation": "#Xinghuan Shouwang# Version 2.1 server-maintenance announcement"
+        }
+      ]
+    },
+    {
+      "case_id": "dev-027",
+      "source_id": "019f1a5e-8188-7712-9891-2632d4499ff4",
+      "literal_english_translation": "Yifu paired with Ailin is quite useful in the Abyss! Karong's damage is a little low; I hope it gets buffed. [crying emoji]",
+      "intended_meaning": "Praises one character pairing while requesting a buff for a different character. Keep the two aspect-level stances.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "mixed",
+        "concern_descriptions": [
+          "Positive Yifu/Ailin team performance",
+          "Karong low damage and buff request"
+        ],
+        "reply_relation": "original",
+        "adds_new_evidence": true,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "A single sentiment label would lose the distinction between the two targets."
+      ],
+      "review_tags": [
+        "multi_aspect",
+        "mixed_stance"
+      ],
+      "source_text": "伊芙配艾琳打深渊还挺好用的！卡戎伤害有点低，希望加强😭",
+      "source_title": null,
+      "platform": "TapTap",
+      "channel": "评价",
+      "created_at": "2026-07-01T05:10:29+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-028",
+      "source_id": "019f1af7-df40-7ff0-84a4-d320c3d415c3",
+      "literal_english_translation": "The phone heats up badly; after half an hour it is hot to hold. Even a Snapdragon 8 Gen 2 device stutters; optimization is too poor.",
+      "intended_meaning": "Reports both heat and stuttering with some device/time context.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Device heating after half an hour",
+          "Stuttering on Snapdragon 8 Gen 2"
+        ],
+        "reply_relation": "original",
+        "adds_new_evidence": true,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "The device, settings, and conditions are player-reported, not benchmark evidence."
+      ],
+      "review_tags": [
+        "performance",
+        "device_context",
+        "multi_aspect"
+      ],
+      "source_text": "手机发热严重，玩半小时烫手。骁龙8Gen2的机子玩着也卡，优化太差",
+      "source_title": null,
+      "platform": "TapTap",
+      "channel": "评价",
+      "created_at": "2026-07-01T07:58:00+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-029",
+      "source_id": "019e7ede-c448-7d5a-a7f4-c72e15d58f9f",
+      "literal_english_translation": "Outrageous, the other side is using a head-locking cheat; I was beaten helplessly... There are too many cheats; I cannot keep playing.",
+      "intended_meaning": "Complains about suspected aimbot cheating and says it is making play intolerable.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Suspected aimbot cheating and perceived anti-cheat failure"
+        ],
+        "reply_relation": "original",
+        "adds_new_evidence": true,
+        "abstain_from": [
+          "Confirming cheating without evidence",
+          "Claiming observed churn"
+        ]
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "The text is an accusation, not a verified cheating incident.",
+        "'Cannot keep playing' expresses frustration; actual subsequent churn is unobserved."
+      ],
+      "review_tags": [
+        "cheating_allegation",
+        "negative"
+      ],
+      "source_text": "离谱，对面锁头挂，被打得没脾气……外掛太多了，玩不下去",
+      "source_title": null,
+      "platform": "Bilibili",
+      "channel": "星环守望官方号",
+      "created_at": "2026-06-01T00:29:49+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-030",
+      "source_id": "019e7fa0-4370-7d69-b7c9-9d2117c55a81",
+      "literal_english_translation": "I cannot hold it together; another day of having to hit pity... May I ask whether pity carries over for the collaboration banner? Another day of hitting pity!!",
+      "intended_meaning": "Expresses frustration with reaching pity and asks about carry-over rules.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Frustration with reaching gacha pity",
+          "Information need about collaboration-banner pity carry-over"
+        ],
+        "reply_relation": "original",
+        "adds_new_evidence": true,
+        "abstain_from": [
+          "Inventing banner rules"
+        ]
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "The question does not establish the game's actual carry-over rules."
+      ],
+      "review_tags": [
+        "gacha",
+        "question",
+        "multi_aspect"
+      ],
+      "source_text": "绷不住了，又是吃保底的一天……求问联动池的保底是继承的吗，又是吃保底的一天！！",
+      "source_title": null,
+      "platform": "TapTap",
+      "channel": "评价",
+      "created_at": "2026-06-01T04:01:10+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-031",
+      "source_id": "019e809f-8330-720f-968d-0c2b8f95219a",
+      "literal_english_translation": "I really will thank [you]; Luoke's new character illustration is so good-looking. Please give the high-resolution original illustration for Yifu; please give the high-resolution original for Miya.",
+      "intended_meaning": "Praises character art and asks for access to high-resolution art. The opening slang does not override explicit praise.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "positive",
+        "concern_descriptions": [
+          "Praise for Luoke's new character art",
+          "Requests for high-resolution character art"
+        ],
+        "reply_relation": "original",
+        "adds_new_evidence": true,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "A request for original art is not a gameplay defect."
+      ],
+      "review_tags": [
+        "slang",
+        "art_praise",
+        "information_need"
+      ],
+      "source_text": "我真的会谢，洛克的新立绘太好看了，求伊芙的高清立绘原图 求米娅的高清立绘原图",
+      "source_title": null,
+      "platform": "Steam",
+      "channel": "讨论区",
+      "created_at": "2026-06-01T08:39:58+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-032",
+      "source_id": "019fb8fc-e3e8-74b5-b76f-132545913bbb",
+      "literal_english_translation": "Still cannot skip the story??? I am not in the mood to read it. This event's story writing is very high quality.",
+      "intended_meaning": "Requests or complains about missing story skipping while praising the writing. The parent discusses gacha rates, which is irrelevant to the child's actual aspects.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "mixed",
+        "concern_descriptions": [
+          "Story-skipping friction",
+          "Praise for event story writing"
+        ],
+        "reply_relation": "new_information",
+        "adds_new_evidence": true,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "Not wanting to read at that moment does not negate explicit writing praise."
+      ],
+      "review_tags": [
+        "traditional_chinese",
+        "multi_aspect",
+        "parent_topic_leakage"
+      ],
+      "source_text": "還不能跳劇情嗎？？？沒心情看。這次活動劇情文案質量很高",
+      "source_title": null,
+      "platform": "Bahamut",
+      "channel": "星環守望 哈啦板",
+      "created_at": "2026-08-01T00:23:29+08:00",
+      "parent_id": "019f758f-08c0-7d5d-a8f5-c23086037b04",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019f758f-08c0-7d5d-a8f5-c23086037b04"
+      ],
+      "context": [
+        {
+          "source_id": "019f758f-08c0-7d5d-a8f5-c23086037b04",
+          "source_text": "整理了這一週的抽卡紀錄，出金率好像比公告低一截，樣本還不夠，大家幫忙補資料",
+          "source_title": "【情報】最近一週出金率實測，好像怪怪的",
+          "platform": "Bahamut",
+          "created_at": "2026-07-18T22:08:56+08:00",
+          "parent_id": null,
+          "literal_english_translation": "I collected this week's pull records; the gold rate seems somewhat lower than announced. The sample is still insufficient; everyone please help add data.",
+          "source_title_english_translation": "[Information] Gold-drop-rate observations from the last week; something seems strange"
+        }
+      ]
+    },
+    {
+      "case_id": "dev-033",
+      "source_id": "019f7237-daf8-7244-a7ef-cce6733827ab",
+      "literal_english_translation": "I really will thank [you]; does anyone else feel that getting gold lately is strange? I pulled my recent 70-pull records; it is clearly below the announced probability. The pull-record export tool was updated; everyone can calculate it themselves; my results are not good. [That tool/results sentence repeats.] [text emoticon]",
+      "intended_meaning": "Raises suspicion based on a self-described 70-pull sample and encourages checking records. This is a player claim about evidence, not proof of altered probabilities.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Suspicion about observed versus published pull rates",
+          "Player-led pull-record analysis"
+        ],
+        "reply_relation": "new_information",
+        "adds_new_evidence": true,
+        "abstain_from": [
+          "Treating claimed statistical evidence as verified",
+          "Confirming a hidden probability change"
+        ]
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "No actual records or statistical calculation are supplied in the text.",
+        "A sample of 70 by itself does not establish a change in probability.",
+        "Repeated clauses do not create additional reporters."
+      ],
+      "review_tags": [
+        "allegation",
+        "claimed_evidence",
+        "repetition"
+      ],
+      "source_text": "我真滴會謝，有沒有人覺得最近出金怪怪的？我拉了自己近70抽的紀錄，明顯低於公示機率。抽卡紀錄匯出工具更新了，大家可以自己算一下，我這邊結果不太妙。抽卡紀錄匯出工具更新了，大家可以自己算一下，我這邊結果不太妙(｀・ω・´)",
+      "source_title": null,
+      "platform": "Bahamut",
+      "channel": "星環守望 哈啦板",
+      "created_at": "2026-07-18T06:34:51+08:00",
+      "parent_id": "019ee822-5e38-752e-8f0b-b9898ce495c0",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019ee822-5e38-752e-8f0b-b9898ce495c0"
+      ],
+      "context": [
+        {
+          "source_id": "019ee822-5e38-752e-8f0b-b9898ce495c0",
+          "source_text": "如題",
+          "source_title": "【問題】艾琳配隊求助",
+          "platform": "Bahamut",
+          "created_at": "2026-06-21T11:03:47+08:00",
+          "parent_id": null,
+          "literal_english_translation": "As in the title.",
+          "source_title_english_translation": "[Question] Help with Ailin team composition"
+        }
+      ]
+    },
+    {
+      "case_id": "dev-034",
+      "source_id": "019fb952-9180-7d4f-9034-440df4a6fd25",
+      "literal_english_translation": "#Xinghuan Shouwang# Disconnected and rolled back; the character I just pulled is gone!! [three angry emojis] // @Baige Wang: me too.",
+      "intended_meaning": "Reports progress loss after a disconnection. The embedded quoted 'me too' is part of this record's text, not another independently ingested person.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Disconnection rollback and loss of a newly pulled character"
+        ],
+        "reply_relation": "new_information",
+        "adds_new_evidence": true,
+        "abstain_from": [
+          "Creating an extra author/message from embedded repost text"
+        ]
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "The loss is self-reported.",
+        "Do not double-count the quoted author as a second verified report."
+      ],
+      "review_tags": [
+        "rollback",
+        "quoted_text",
+        "high_severity"
+      ],
+      "source_text": "#星环守望# 掉线回档了，刚抽的角色没了！！<emoji:怒><emoji:怒><emoji:怒>//@白给王:我也是",
+      "source_title": null,
+      "platform": "Weibo",
+      "channel": "@星环守望",
+      "created_at": "2026-08-01T01:57:04+08:00",
+      "parent_id": "019f16ac-4728-79b8-8252-b4af5d639f6d",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019f16ac-4728-79b8-8252-b4af5d639f6d"
+      ],
+      "context": [
+        {
+          "source_id": "019f16ac-4728-79b8-8252-b4af5d639f6d",
+          "source_text": "详情见图<image:b2f4484ba839d7beab2ecca5ccc8d6b631c133c4590b65f77ecee6c8957e1331>",
+          "source_title": "#星环守望# 周年庆活动开启！",
+          "platform": "Weibo",
+          "created_at": "2026-06-30T11:56:57+08:00",
+          "parent_id": null,
+          "literal_english_translation": "See the image for details. [image reference]",
+          "source_title_english_translation": "#Xinghuan Shouwang# The anniversary event starts!"
+        }
+      ]
+    },
+    {
+      "case_id": "dev-035",
+      "source_id": "019fb8f3-faa8-78e7-b7a1-686ba9667569",
+      "literal_english_translation": "To be fair, I found a bug: it freezes during autosave. [text emoticon] [angry emoji]",
+      "intended_meaning": "Reports a concrete autosave freeze trigger.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Autosave freeze"
+        ],
+        "reply_relation": "original",
+        "adds_new_evidence": true,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "No reproduction steps, hardware, or verification are provided beyond the claimed trigger."
+      ],
+      "review_tags": [
+        "bug_report"
+      ],
+      "source_text": "讲道理发现个bug 自动保存就会卡死 (｀・ω・´)😡",
+      "source_title": null,
+      "platform": "Steam",
+      "channel": "评测",
+      "created_at": "2026-08-01T00:13:45+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-036",
+      "source_id": "019fb8fe-fef8-7c21-9f87-1e8c75981daa",
+      "literal_english_translation": "The new character is so strong that all old characters go into storage! Selena's strength is ridiculous. If you do not pull Selena you are abandoned by the current version; clever calculations from the planners. [clown emoji]",
+      "intended_meaning": "Criticizes power creep and perceived pressure to obtain Selena. The sarcastic 'clever calculations' is not praise.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Perceived Selena power creep",
+          "Perceived pressure to pull the new character"
+        ],
+        "reply_relation": "original",
+        "adds_new_evidence": true,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "No numerical balance data are provided.",
+        "The phrase about old characters going into storage is figurative and may be exaggerated."
+      ],
+      "review_tags": [
+        "sarcasm",
+        "power_creep",
+        "monetization"
+      ],
+      "source_text": "新角色這麼強，老角色全進倉庫了！賽琳娜強度太誇張了 不抽賽琳娜就是被版本拋棄，策劃好算盤🤡",
+      "source_title": null,
+      "platform": "Discord",
+      "channel": "#bug-report",
+      "created_at": "2026-08-01T00:25:47+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-037",
+      "source_id": "019f1b1c-9998-7565-89b2-58c721bfb9e8",
+      "literal_english_translation": "Uh, this new growth pack is 128 yuan; are you robbing us? [three angry emojis]",
+      "intended_meaning": "Criticizes the price of a newly introduced pack.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Growth-pack price and perceived value"
+        ],
+        "reply_relation": "original",
+        "adds_new_evidence": true,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "The price is quoted by the player; the listing has not been independently checked."
+      ],
+      "review_tags": [
+        "pricing",
+        "negative"
+      ],
+      "source_text": "啊这，新出的成长礼包128元，抢钱呢😡😡😡",
+      "source_title": null,
+      "platform": "Steam",
+      "channel": "讨论区",
+      "created_at": "2026-07-01T08:38:07+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-038",
+      "source_id": "019f1aef-f7d0-7113-b4c3-a9e4a2717812",
+      "literal_english_translation": "#Xinghuan Shouwang# This is laughable; Luoke's damage is a little low, I hope it gets buffed. Was Yifu nerfed? The feel is much worse... Does Luoke's passive not work for the on-field character? The skill description is unclear.",
+      "intended_meaning": "Combines a damage/buff request, a suspected nerf, and a skill-description/interaction question. These require separate aspect records.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Luoke low damage and buff request",
+          "Suspected Yifu nerf or worse feel",
+          "Unclear Luoke passive description/interaction"
+        ],
+        "reply_relation": "new_information",
+        "adds_new_evidence": true,
+        "abstain_from": [
+          "Confirming an unverified nerf",
+          "Inventing a passive-skill rule"
+        ]
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "The questions do not establish that a nerf occurred or how the passive actually works.",
+        "On-field is the likely gaming meaning of 前台; precise mechanics remain unknown."
+      ],
+      "review_tags": [
+        "multi_aspect",
+        "uncertain_mechanics",
+        "question"
+      ],
+      "source_text": "#星环守望# 笑死，洛克伤害有点低，希望加强 伊芙是不是被削了？手感变差好多……洛克的被动是不是对前台无效？技能描述写得不清不楚",
+      "source_title": null,
+      "platform": "Weibo",
+      "channel": "@星环守望",
+      "created_at": "2026-07-01T07:49:22+08:00",
+      "parent_id": "019efce2-78a8-7f32-95ed-39dac6b7a6c6",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019efce2-78a8-7f32-95ed-39dac6b7a6c6"
+      ],
+      "context": [
+        {
+          "source_id": "019efce2-78a8-7f32-95ed-39dac6b7a6c6",
+          "source_text": "详情见图<image:b291022688fb3ab0494596c375047e9fce7e16f9ddf13f8dcc6ea7f49e44e789>",
+          "source_title": "#星环守望# 本周活动预告",
+          "platform": "Weibo",
+          "created_at": "2026-06-25T11:46:01+08:00",
+          "parent_id": null,
+          "literal_english_translation": "See the image for details. [image reference]",
+          "source_title_english_translation": "#Xinghuan Shouwang# Preview of this week's events"
+        }
+      ]
+    },
+    {
+      "case_id": "dev-039",
+      "source_id": "01a01ac3-9b30-7ce9-a54b-5ba68272a94e",
+      "literal_english_translation": "To be fair, it keeps crashing after the update, hahaha.",
+      "intended_meaning": "Reports recurring crashes following an unspecified update. The laughter marker does not turn it into praise.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Crashes reported after an update"
+        ],
+        "reply_relation": "new_information",
+        "adds_new_evidence": true,
+        "abstain_from": [
+          "Assigning the crash to a specific release without evidence"
+        ]
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "The text does not name the update version or establish causation.",
+        "The June anniversary parent does not date the reported update."
+      ],
+      "review_tags": [
+        "late_period",
+        "slang",
+        "release_correlation"
+      ],
+      "source_text": "讲道理更新完之後一直閃退2333",
+      "source_title": null,
+      "platform": "Weibo",
+      "channel": "@星环守望",
+      "created_at": "2026-08-20T00:03:42+08:00",
+      "parent_id": "019f16ac-4728-79b8-8252-b4af5d639f6d",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019f16ac-4728-79b8-8252-b4af5d639f6d"
+      ],
+      "context": [
+        {
+          "source_id": "019f16ac-4728-79b8-8252-b4af5d639f6d",
+          "source_text": "详情见图<image:b2f4484ba839d7beab2ecca5ccc8d6b631c133c4590b65f77ecee6c8957e1331>",
+          "source_title": "#星环守望# 周年庆活动开启！",
+          "platform": "Weibo",
+          "created_at": "2026-06-30T11:56:57+08:00",
+          "parent_id": null,
+          "literal_english_translation": "See the image for details. [image reference]",
+          "source_title_english_translation": "#Xinghuan Shouwang# The anniversary event starts!"
+        }
+      ]
+    },
+    {
+      "case_id": "dev-040",
+      "source_id": "019fb8fc-6eb8-7140-ba4b-e58eb84122eb",
+      "literal_english_translation": "To be fair, latency is always high; my network is fine. I found a bug: it freezes during autosave.",
+      "intended_meaning": "Reports two distinct problems: latency despite the writer's network assessment, and autosave freezing.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "High latency",
+          "Autosave freeze"
+        ],
+        "reply_relation": "new_information",
+        "adds_new_evidence": true,
+        "abstain_from": [
+          "Concluding that latency is definitely server-side"
+        ]
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "The writer's assertion that the network is fine does not establish server-side causation.",
+        "One multi-issue message should not create extra raw-message counts."
+      ],
+      "review_tags": [
+        "multi_aspect",
+        "bug_report"
+      ],
+      "source_text": "讲道理延迟一直很高，网络没问题啊  发现个bug 自动保存就会卡死 ",
+      "source_title": null,
+      "platform": "Bilibili",
+      "channel": "星环守望官方号",
+      "created_at": "2026-08-01T00:22:59+08:00",
+      "parent_id": "019efce8-c5f0-790f-ab2b-de17e5b7fbab",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019efce8-c5f0-790f-ab2b-de17e5b7fbab"
+      ],
+      "context": [
+        {
+          "source_id": "019efce8-c5f0-790f-ab2b-de17e5b7fbab",
+          "source_text": "详情见图<image:42ef06408b624cf4a952bc8dbc991198462ab71d9938bde9f2f9386fd413406e>",
+          "source_title": "【星环守望】周年预热直播回放",
+          "platform": "Bilibili",
+          "created_at": "2026-06-25T11:52:54+08:00",
+          "parent_id": null,
+          "literal_english_translation": "See the image for details. [image reference]",
+          "source_title_english_translation": "[Xinghuan Shouwang] Anniversary warm-up livestream replay"
+        }
+      ]
+    },
+    {
+      "case_id": "dev-041",
+      "source_id": "01a034fe-8aa0-71bd-952f-88f6a453659a",
+      "literal_english_translation": "The art style is getting better and better. The environment art is the eternal god. The art style is getting better and better. [melon-eating emoji]",
+      "intended_meaning": "Praises art direction and environment art. yyds means strong praise; the repeated clause is not multiple independent endorsements.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "positive",
+        "concern_descriptions": [
+          "Improving art style and praised environment art"
+        ],
+        "reply_relation": "new_information",
+        "adds_new_evidence": true,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "The emoji does not reverse the explicit praise."
+      ],
+      "review_tags": [
+        "late_period",
+        "slang",
+        "repetition",
+        "positive"
+      ],
+      "source_text": "画风越来越好了 场景美术yyds 画风越来越好了<emoji:吃瓜>",
+      "source_title": null,
+      "platform": "Bilibili",
+      "channel": "星环守望官方号",
+      "created_at": "2026-08-25T02:18:12+08:00",
+      "parent_id": "019f7d99-c000-79ae-a4e1-504d5f3b0471",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019f7d99-c000-79ae-a4e1-504d5f3b0471"
+      ],
+      "context": [
+        {
+          "source_id": "019f7d99-c000-79ae-a4e1-504d5f3b0471",
+          "source_text": "详情见图<image:3225121844900793a370eb13b311b7abc3c28f6bf08770e8df49235ee5575427>",
+          "source_title": "【星环守望】2.0版本PV「赛琳娜」",
+          "platform": "Bilibili",
+          "created_at": "2026-07-20T11:37:36+08:00",
+          "parent_id": null,
+          "literal_english_translation": "See the image for details. [image reference]",
+          "source_title_english_translation": "[Xinghuan Shouwang] Version 2.0 promotional video: Selena"
+        }
+      ]
+    },
+    {
+      "case_id": "dev-042",
+      "source_id": "019f7538-8450-7763-abe3-4437be40e2d4",
+      "literal_english_translation": "The pull-record export tool was updated; everyone can calculate it themselves; my results are not good! [The same sentence appears three times.] [text emoticon]",
+      "intended_meaning": "Mentions unfavorable self-calculated pull results, repeating one claim three times. Count one message/claim occurrence with repetition metadata.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Unfavorable self-reported pull-record results"
+        ],
+        "reply_relation": "new_information",
+        "adds_new_evidence": true,
+        "abstain_from": [
+          "Multiplying evidence by repeated clauses"
+        ]
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "No results, sample size, or actual records are given.",
+        "This is not three independent reporters or three independent analyses."
+      ],
+      "review_tags": [
+        "repetition",
+        "claimed_evidence"
+      ],
+      "source_text": "抽卡紀錄匯出工具更新了，大家可以自己算一下，我這邊結果不太妙！抽卡紀錄匯出工具更新了，大家可以自己算一下，我這邊結果不太妙！抽卡紀錄匯出工具更新了，大家可以自己算一下，我這邊結果不太妙(｀・ω・´)",
+      "source_title": null,
+      "platform": "Bahamut",
+      "channel": "星環守望 哈啦板",
+      "created_at": "2026-07-18T20:34:26+08:00",
+      "parent_id": "019e8b73-5908-7125-b061-d4aba63ff7b0",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019e8b73-5908-7125-b061-d4aba63ff7b0"
+      ],
+      "context": [
+        {
+          "source_id": "019e8b73-5908-7125-b061-d4aba63ff7b0",
+          "source_text": "如題",
+          "source_title": "【心得】新手入坑指南",
+          "platform": "Bahamut",
+          "created_at": "2026-06-03T11:07:33+08:00",
+          "parent_id": null,
+          "literal_english_translation": "As in the title.",
+          "source_title_english_translation": "[Experience] Beginner's guide to getting started"
+        }
+      ]
+    },
+    {
+      "case_id": "dev-043",
+      "source_id": "019e82c3-45c0-74ae-bbcc-edbb4ddeedb4",
+      "literal_english_translation": "In Hubei. [three QQ face emojis]",
+      "intended_meaning": "A location statement with no described game experience or concern.",
+      "expected": {
+        "relevance": "off_topic",
+        "stance": "neutral",
+        "concern_descriptions": [],
+        "reply_relation": "original",
+        "adds_new_evidence": false,
+        "abstain_from": [
+          "Inventing a regional product issue"
+        ]
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "Location alone is not evidence of regional latency or a regional player problem."
+      ],
+      "review_tags": [
+        "personal_chat",
+        "keyword_trap"
+      ],
+      "source_text": "在湖北<emoji:qq-face-5><emoji:qq-face-5><emoji:qq-face-5>",
+      "source_title": null,
+      "platform": "Bahamut",
+      "channel": "星環守望 哈啦板",
+      "created_at": "2026-06-01T18:38:16+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-044",
+      "source_id": "019e80d7-3cd0-765d-8b1c-e76308bb8ad8",
+      "literal_english_translation": "Uh, the matchmaking system is awful. Solo queue always gets matched against premade teams. I queued for ages and could not find anyone. [text emoticon]",
+      "intended_meaning": "Complains about solo-versus-premade fairness and long/unsuccessful queues.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Solo players matched against premade teams",
+          "Long or unsuccessful matchmaking"
+        ],
+        "reply_relation": "original",
+        "adds_new_evidence": true,
+        "abstain_from": []
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "The statements could refer to separate matches or sessions; exact frequency is not established."
+      ],
+      "review_tags": [
+        "matchmaking",
+        "multi_aspect"
+      ],
+      "source_text": "啊这，匹配機制爛透了 单排总被匹配到车队。排了半天匹配不到人(｀・ω・´)",
+      "source_title": null,
+      "platform": "Steam",
+      "channel": "评测",
+      "created_at": "2026-06-01T09:40:50+08:00",
+      "parent_id": null,
+      "source_title_english_translation": null,
+      "reply_context_ids": [],
+      "context": []
+    },
+    {
+      "case_id": "dev-045",
+      "source_id": "019f9d38-4350-7aa8-9178-720f475e527e",
+      "literal_english_translation": "Seriously, one gold in thirty pulls used to be normal; now even a hundred is difficult; judge for yourselves! The planners understand players: they know how to quietly change probabilities. I suggest everyone keep screenshots of pull records; we are preparing a collective complaint about hidden changes. Hahaha.",
+      "intended_meaning": "Expresses a covert-rate-change accusation, uses sarcastic praise, and voices a call to collect records and prepare a collective complaint. The call may be humorous or hyperbolic; it does not prove a serious commitment, completed action, or the underlying allegation.",
+      "expected": {
+        "relevance": "relevant",
+        "stance": "negative",
+        "concern_descriptions": [
+          "Alleged covert probability changes",
+          "Call to collect evidence and prepare a collective complaint"
+        ],
+        "reply_relation": "new_information",
+        "adds_new_evidence": true,
+        "abstain_from": [
+          "Confirming hidden rate changes",
+          "Inferring completed collective action or coordinated accounts"
+        ]
+      },
+      "confidence": {
+        "level": "high",
+        "rationale": "The substantive text or direct-parent context supports the stated judgment. Remaining limitations are recorded explicitly."
+      },
+      "ambiguity": [
+        "The claimed old/new rates are anecdotal and unverified.",
+        "A call for collective action does not establish that a coordinated campaign actually occurred or that all repeats are bots.",
+        "The laughter marker 2333 can make the call humorous or hyperbolic. Record expressed mobilization intent without assuming a serious commitment."
+      ],
+      "review_tags": [
+        "sarcasm",
+        "allegation",
+        "mobilization_intent"
+      ],
+      "source_text": "说真的，以前三十抽一个金很正常，现在一百抽都难，你们自己品！策划是懂玩家的，懂得怎么悄悄改概率 建议大家保留抽卡记录截图，暗改的事准备集体投诉2333",
+      "source_title": null,
+      "platform": "Bilibili",
+      "channel": "星环守望官方号",
+      "created_at": "2026-07-26T14:58:58+08:00",
+      "parent_id": "019f7d83-9438-7fc0-8e7a-a974e3ff5a3d",
+      "source_title_english_translation": null,
+      "reply_context_ids": [
+        "019f7d83-9438-7fc0-8e7a-a974e3ff5a3d"
+      ],
+      "context": [
+        {
+          "source_id": "019f7d83-9438-7fc0-8e7a-a974e3ff5a3d",
+          "source_text": "详情见图<image:b356936109f0c22d3b4144e1d76266dbd344330fe9205facdc148272327444e4>",
+          "source_title": "【星环守望】每周攻略速递 第8期",
+          "platform": "Bilibili",
+          "created_at": "2026-07-20T11:13:23+08:00",
+          "parent_id": null,
+          "literal_english_translation": "See the image for details. [image reference]",
+          "source_title_english_translation": "[Xinghuan Shouwang] Weekly strategy digest, issue 8"
+        }
+      ]
+    }
+  ],
+  "source_sha256": "722f9a662a2c7fcd52805066c50f334fcb017034abb01fff015cb7e27522ff77",
+  "coverage": {
+    "case_count": 45,
+    "platform_counts": {
+      "Discord": 6,
+      "Bilibili": 10,
+      "Weibo": 5,
+      "TapTap": 5,
+      "QQ": 7,
+      "Bahamut": 6,
+      "Steam": 6
+    },
+    "month_counts": {
+      "2026-06": 25,
+      "2026-07": 12,
+      "2026-08": 8
+    },
+    "relevance_counts": {
+      "relevant": 34,
+      "off_topic": 6,
+      "uncertain": 5
+    },
+    "stance_counts": {
+      "positive": 6,
+      "negative": 19,
+      "neutral": 8,
+      "mixed": 3,
+      "uncertain": 9
+    },
+    "confidence_counts": {
+      "high": 32,
+      "medium": 6,
+      "low": 7
+    }
+  },
+  "review_notes": [
+    "These remain assistant-reviewed development fixtures, not independent human ground truth.",
+    "A second assistant Chinese-language review prompted qualifications for emotional tone, reply targets, unresolved pull timelines, and potentially humorous collective-action language."
+  ]
+}

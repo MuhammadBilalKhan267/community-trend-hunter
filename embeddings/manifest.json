@@ -1,0 +1,37 @@
+{
+  "format": "embedding-cache-npz-v1",
+  "cache_version": "local-models-v1",
+  "embedding_profiles": [
+    {
+      "model_name": "bge-m3:latest",
+      "digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+      "options": {
+        "num_ctx": 512,
+        "num_batch": 512
+      },
+      "dimensions": 1024
+    }
+  ],
+  "vector_encoding": "little-endian float32",
+  "rows": 27925,
+  "shards": [
+    {
+      "file": "part-001.npz",
+      "rows": 10000,
+      "bytes": 38442397,
+      "sha256": "f939d85b6ced63e9f77773a51f263d9fbf8dd33ed9561b6aa5cade36d8f6201f"
+    },
+    {
+      "file": "part-002.npz",
+      "rows": 10000,
+      "bytes": 38441190,
+      "sha256": "e0098f974a230760147ae7e48344703abc6e99b62f0d31161df1d9b567c192a5"
+    },
+    {
+      "file": "part-003.npz",
+      "rows": 7925,
+      "bytes": 30465636,
+      "sha256": "ae128efb2a158213145546cc7155301ec36246ebee825296e3564469aa9647f2"
+    }
+  ]
+}

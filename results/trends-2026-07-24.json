@@ -1,0 +1,163 @@
+{
+  "as_of": "2026-07-24",
+  "trends": [
+    {
+      "title": "玩家对PVP平衡性及竞技场环境的不满",
+      "title_en": "Players' dissatisfaction with PVP balance and the monotonous competitive arena environment",
+      "category": "Players' dissatisfaction with PVP balance and the monotonous competitive arena environment",
+      "why": "Players' dissatisfaction with PVP balance and the monotonous competitive arena environment. Discussion increased across the observed comparison periods and continued on several recent days. Suggested next step: 联系游戏官方客服，反馈PVP平衡性问题及竞技场环境单一的情况，请求官方进行调整和优化。",
+      "status": "growing",
+      "first_seen": "2026-06-01",
+      "voice_ids": [
+        "019e8070-2248-747a-8fe4-a1cc290b874a",
+        "019e89e5-cb98-7a32-b4ab-9609f930419f",
+        "019eaa68-cb18-75b4-bb4a-b51c8a083337",
+        "019edace-bb50-736f-8146-1f8f814e43a5",
+        "019f0773-4a40-713e-92cd-dc82886c5ed1",
+        "019f3593-8c50-7ee1-952d-3da7c95b5ccd",
+        "019f4c5c-20f0-7aac-bf55-166cd7afa92a",
+        "019f6fd5-36c0-70ce-9b8b-d189823c5107",
+        "019f8343-a3e0-7bb4-ae63-5e441e9b1127",
+        "019f94cc-e5e0-76e7-8ce9-71a7308634a6"
+      ]
+    },
+    {
+      "title": "玩家反馈游戏延迟高及加载问题",
+      "title_en": "Player Feedback on High Latency and Loading Issues in the Game",
+      "category": "Player Feedback on High Latency and Loading Issues in the Game",
+      "why": "Player Feedback on High Latency and Loading Issues in the Game. Discussion increased across the observed comparison periods and continued on several recent days. Suggested next step: 联系游戏官方客服，反馈关于游戏延迟高和加载问题的玩家体验，请求技术团队调查和优化。",
+      "status": "growing",
+      "first_seen": "2026-06-01",
+      "voice_ids": [
+        "019e8274-f2f8-7f1c-b140-e1474fef88fb",
+        "019e925f-4e20-7b28-bf11-d607cef32a7b",
+        "019ee3ab-83e8-723f-9e0d-da1af7f4453d",
+        "019f1bf1-d770-76cc-9c27-102ce76583cf",
+        "019f4804-f7e8-7613-8ccb-2d79abeea4a1",
+        "019f51b0-c880-7baf-9c2e-ac33b1d69f71",
+        "019f6108-e240-7e7c-9ad1-41f42f791de3",
+        "019f69ad-a700-7d14-85e5-a0dc6a1d8cb4",
+        "019f7f66-61e0-730f-9287-236e4847b0a5",
+        "019f93a0-fc88-7bb6-b9a9-0613ca2a47b9"
+      ]
+    },
+    {
+      "title": "游戏性能优化问题",
+      "title_en": "Game Performance Optimization Issues",
+      "category": "Game Performance Optimization Issues",
+      "why": "Game Performance Optimization Issues. Discussion increased across the observed comparison periods and continued on several recent days. Suggested next step: 收集不同设备上的性能反馈，以评估游戏在多平台上的优化情况。",
+      "status": "growing",
+      "first_seen": "2026-06-01",
+      "voice_ids": [
+        "019e80cb-7d00-7e83-bc52-81d6d03510b9",
+        "019e9d52-67e0-7e71-b9a1-f2558ad33f57",
+        "019f4855-f648-79cb-9ba1-9059d3a8b4ce",
+        "019f5577-1398-7748-9e77-0b5c0068f65d",
+        "019f64f1-6ee0-7407-9c62-f07ea8a3d1a1",
+        "019f7a5e-6b20-7d17-a5d1-842638e9c5bf",
+        "019f8771-eff8-78a4-8d8b-31e87d2fda5f",
+        "019f8edd-8cc0-7618-b527-7ea7c2cd1c72",
+        "019f946c-a928-7f59-989a-efd05b2537bf"
+      ]
+    },
+    {
+      "title": "玩家对匹配机制改进的反馈与社区互动",
+      "title_en": "Player Feedback on Matchmaking System Improvements and Community Interaction",
+      "category": "Player Feedback on Matchmaking System Improvements and Community Interaction",
+      "why": "Player Feedback on Matchmaking System Improvements and Community Interaction. Discussion declined across the observed comparison periods; this does not establish that the issue was resolved. Suggested next step: Verify if the game studio has acknowledged or addressed the community's feedback regarding the matchmaking system improvements.",
+      "status": "fading",
+      "first_seen": "2026-07-11",
+      "voice_ids": [
+        "019f4cf3-4458-7f34-bc77-d017a8342307",
+        "019f4d1d-07c0-730b-baea-e14c44d7a4f2",
+        "019f54cb-c038-7ea8-80eb-e9df902d8bd5",
+        "019f59cd-42a0-76b8-b687-beaa08a088d8",
+        "019f59e3-04f0-7cbb-abd7-db020c407b71",
+        "019f5b4c-0ad0-75a9-9478-35baecc6d47f",
+        "019f757c-72f0-7c18-952f-5403af6f0417",
+        "019f785f-bcc0-78ab-9672-3183a2f02880",
+        "019f85cb-40f0-7b5d-8bab-e30334134756",
+        "019f93ea-1378-70a1-ac8c-9359f3c9d16a"
+      ]
+    },
+    {
+      "title": "玩家对剧情内容的反馈与评价",
+      "title_en": "Player Feedback on Narrative Content",
+      "category": "Player Feedback on Narrative Content",
+      "why": "Player Feedback on Narrative Content. Discussion increased across the observed comparison periods and continued on several recent days. Suggested next step: 收集玩家对剧情内容的反馈，包括对剧情质量、节奏和情感共鸣的评价，以评估玩家对剧情的接受度和满意度。",
+      "status": "growing",
+      "first_seen": "2026-06-01",
+      "voice_ids": [
+        "019e7ffc-af98-741d-884a-00ac7e855fbc",
+        "019ea04d-f0b8-7d2c-a587-5d7b2ca92e8e",
+        "019f0bb4-8218-742a-ab70-90acb6f43c58",
+        "019f16dd-a3e0-7a90-a4f2-05f1082e74de",
+        "019f20fc-56a0-7ce3-b8f2-48af59b9448c",
+        "019f2824-1468-7c4b-8e88-8f4e5b993c3e",
+        "019f548b-57f0-715a-b9ef-65e2d5692099",
+        "019f7ebc-4ed0-7d75-b796-3d4138534b26",
+        "019f830b-4e00-7b43-8e46-db7c5b39c5c1",
+        "019f94c7-e888-79fb-948c-f2fb63c378a8"
+      ]
+    },
+    {
+      "title": "玩家间交易与信息分享活动",
+      "title_en": "Player-to-Player Trading and Information Sharing Activities",
+      "category": "Player-to-Player Trading and Information Sharing Activities",
+      "why": "Player-to-Player Trading and Information Sharing Activities. Discussion declined across the observed comparison periods; this does not establish that the issue was resolved. Suggested next step: Verify if the '出号，全图鉴，价格私聊' messages are part of a coordinated trading or information exchange activity within the game's community.",
+      "status": "fading",
+      "first_seen": "2026-06-01",
+      "voice_ids": [
+        "019e825d-d118-7260-a480-948960401f25",
+        "019ea7a0-dd30-73af-8734-221768a998ff",
+        "019eb17d-eb40-7590-bb96-fa9654c9bd88",
+        "019f2b33-b5c8-7fd6-b79e-acaa719c9ebc",
+        "019f32c3-e1f0-7e83-b5de-c114bb81fc08",
+        "019f563b-7120-761a-af56-677ed6034aef",
+        "019f6194-da48-79d0-89eb-277ee22059f9",
+        "019f75d5-9b28-7db2-999d-d5eb28572e7e",
+        "019f9449-61e8-760e-86c2-b0ef918463cb"
+      ]
+    },
+    {
+      "title": "玩家对新角色赛琳娜强度的讨论与反馈",
+      "title_en": "Player Discussion and Feedback on the Strength of the New Character Selena",
+      "category": "Player Discussion and Feedback on the Strength of the New Character Selena",
+      "why": "Player Discussion and Feedback on the Strength of the New Character Selena. The topic first appeared recently and recurred on multiple observed days. Suggested next step: Verify if the game studio has acknowledged the community's concerns about the strength of the new character 'Selena' and whether any balance adjustments are planned.",
+      "status": "new",
+      "first_seen": "2026-07-21",
+      "voice_ids": [
+        "019f82b9-4218-7e2b-aa97-56e0644fb290",
+        "019f8a77-b200-7f2f-87fb-1dc4f992edcb",
+        "019f8a8e-a500-7aac-ab99-ba7a1b349528",
+        "019f8d76-a5d8-7abe-8e34-9f93118717f5",
+        "019f8e85-79e0-781b-ac1f-4ee0cb6a7571",
+        "019f8f40-2308-7379-8169-7c6470f81d4b",
+        "019f9377-b238-7933-936f-6da9922a5dcd",
+        "019f9400-27d0-755e-98e3-68fd8cfeba5e",
+        "019f943a-c7a0-70c0-9554-de2f61ea420c",
+        "019f94b9-7168-7edd-9b5f-5ff3972f2f2c"
+      ]
+    },
+    {
+      "title": "游戏匹配机制问题引发玩家不满",
+      "title_en": "Player dissatisfaction with the game's matchmaking system",
+      "category": "Player dissatisfaction with the game's matchmaking system",
+      "why": "Player dissatisfaction with the game's matchmaking system. Discussion declined across the observed comparison periods; this does not establish that the issue was resolved. Suggested next step: 调查游戏匹配机制的问题，收集玩家反馈并分析匹配系统是否存在问题。",
+      "status": "fading",
+      "first_seen": "2026-06-01",
+      "voice_ids": [
+        "019e7f51-48b0-761b-a7fc-05cd4522475a",
+        "019ea744-55b0-72a6-b67a-1f62f8495cb3",
+        "019eb49a-5228-798e-b8d9-2207d742509e",
+        "019ed15c-2710-7fdd-a26f-4f5a7db614f0",
+        "019ee63c-6410-7a63-b67f-ba6b76c32f18",
+        "019f03e3-bec8-724b-ba5a-07511b343f7d",
+        "019f2d1d-bb18-781d-ae00-63151f0eb4b7",
+        "019f5ed9-5040-7ea8-8ed7-aadaa6df5157",
+        "019f6fd6-3c78-7bf4-a47c-44c0903b9a56",
+        "019f9436-eb58-7acc-88d6-e92ea743203a"
+      ]
+    }
+  ]
+}
